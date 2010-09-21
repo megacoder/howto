@@ -1,0 +1,10 @@
+#!/bin/zsh
+rm -f configure
+configure -m distcc							\
+	--with-gnome							\
+	"$@"
+exit
+	--disable-Werror						\
+	--enable-rfc2553						\
+	--with-auth							\
+	--with-gtk							\

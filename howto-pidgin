@@ -1,0 +1,6 @@
+#!/bin/zsh
+rm -f configure
+configure pidgin							\
+	--disable-avahi							\
+	--disable-meanwhile						\
+	$@

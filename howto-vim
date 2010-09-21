@@ -1,0 +1,23 @@
+#!/bin/zsh
+[ -d src ] && cd src
+[ -d autom4cache ] && rm -rf autom4cache
+[ -d auto ] && rm -rf auto/config.cache
+mkdir -p auto
+rm -f configure
+configure -m vim							\
+	--with-features=huge						\
+	--enable-perlinterp=yes						\
+	--enable-pythoninterp=yes					\
+	--enable-tclinterp						\
+	--enable-rubyinterp=yes						\
+	--enable-luainterp=yes						\
+	--enable-cscope							\
+	--enable-sniff							\
+	--enable-fontset						\
+	--enable-gui=gtk2						\
+	--disable-athena-check						\
+	--disable-nextaw-check						\
+	CFLAGS='-pipe -g -Os -D_FORTIFY_SOURCE=1'			\
+	"$@"
+exit
+	--enable-gnome-check						\

@@ -1,0 +1,4 @@
+#!/bin/zsh
+rm -rf configure autom4*
+configure smooth --enable-gtk-{1,2}  --with-gnu-ld --prefix=/usr 'CC=gcc34'
+make -j5

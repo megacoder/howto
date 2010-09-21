@@ -1,0 +1,11 @@
+#!/bin/zsh
+# vim: ts=8 sw=8
+	configure e16							\
+		--prefix=/usr						\
+		--enable-modules					\
+		--enable-pango						\
+		--disable-nls						\
+		--enable-sound						\
+		--enable-sound-pulse					\
+		"$@"
+exit

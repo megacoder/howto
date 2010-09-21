@@ -1,0 +1,8 @@
+#!/bin/zsh
+rm -rf configure autom4te.cache
+configure ayttm								\
+	--disable-icq							\
+	--disable-msn							\
+	--disable-oscar							\
+	--disable-yahoo							\
+	"$@"

@@ -1,0 +1,9 @@
+#!/bin/zsh
+configure eterm								\
+	--enable-trans							\
+	--enable-mmx							\
+	--enable-sse2							\
+	--enable-auto-encoding						\
+	--enable-multi-charset						\
+	--enable-name-reporting-escapes					\
+	"$@"

@@ -1,0 +1,4 @@
+configure sudosh							\
+	--sysconfdir=/opt/sudosh/etc					\
+	--enable-recordinput						\
+	"$@"

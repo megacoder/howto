@@ -1,0 +1,12 @@
+#!/bin/sh
+# vim: sw=8 ts=8
+
+rm -f configure
+./Util/preconfig
+
+configure zsh								\
+	--enable-maildir-support					\
+	--enable-cap							\
+	--with-curses-terminfo						\
+	--enable-zsh-debug						\
+	"$@"

@@ -1,0 +1,7 @@
+if [ $# -gt 0 ]; then
+	exiv2 -r'%Y%m%d-%H%M%S_:basename:' rename "$@"
+fi
+for d in $(ls | fgrep -e jpg -e png -e gif | cut -d- -f1 | sort -u); do
+	mkdir -p ${d}
+	dow ${d}-*.* ${d}/
+done

@@ -1,0 +1,1 @@
+configure sylpheed --with-libsylph=/opt/sylpheed 'CFLAGS=-I/opt/sylpheed/include/sylpheed'

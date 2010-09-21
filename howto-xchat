@@ -1,0 +1,10 @@
+#!/bin/zsh
+rm -rf configure autom4te.cache
+exec configure xchat							\
+	--disable-nls							\
+	--disable-ipv6							\
+	--enable-threads=posix						\
+	--enable-shm							\
+	--enable-xft							\
+	--enable-spell=libsexy						\
+	"$@"

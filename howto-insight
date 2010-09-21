@@ -1,0 +1,2 @@
+#!/bin/zsh
+configure insight --target=x86_64-pc-linux

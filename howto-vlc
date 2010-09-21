@@ -1,0 +1,1 @@
+configure vlc --disable-avcodec --disable-avformat --disable-swscale --disable-postproc

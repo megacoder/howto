@@ -1,0 +1,1 @@
+configure purple-plugin-pack --prefix=/usr --libdir='/usr/lib64'
