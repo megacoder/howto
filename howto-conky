@@ -1,0 +1,16 @@
+#!/bin/zsh
+rm -f configure autom4*
+./autogen.sh --help
+configure conky								\
+	--enable-audacious=yes						\
+	--enable-iostats						\
+	--enable-curl							\
+	--enable-rss							\
+	--enable-weather-metar						\
+	--enable-weather-xoap						\
+	--enable-imlib2							\
+	--enable-lua-imlib2						\
+	--enable-lua							\
+	--enable-lua-cairo						\
+	--enable-wlan							\
+	"$@"
