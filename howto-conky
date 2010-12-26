@@ -1,0 +1,14 @@
+#!/bin/zsh
+rm -f configure
+configure conky								\
+	--enable-audacious=yes						\
+	--enable-iostats						\
+	--enable-curl							\
+	--enable-rss							\
+	--enable-weather-xoap						\
+	--enable-imlib2							\
+	--enable-lua-imlib2						\
+	--enable-lua							\
+	--enable-lua-cairo						\
+	--enable-wlan							\
+	"$@"
