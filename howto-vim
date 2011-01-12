@@ -6,8 +6,8 @@ mkdir -p auto
 rm -f configure
 configure -m vim							\
 	--with-features=huge						\
-	--enable-perlinterp=yes						\
 	--enable-pythoninterp=yes					\
+	--enable-perlinterp=dynamic					\
 	--enable-tclinterp						\
 	--enable-rubyinterp=yes						\
 	--enable-luainterp=yes						\
