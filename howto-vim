@@ -7,7 +7,6 @@ rm -f configure
 configure -m vim							\
 	--with-features=huge						\
 	--enable-pythoninterp=yes					\
-	--enable-perlinterp=dynamic					\
 	--enable-tclinterp						\
 	--enable-rubyinterp=yes						\
 	--enable-luainterp=yes						\
@@ -21,3 +20,4 @@ configure -m vim							\
 	"$@"
 exit
 	--enable-gnome-check						\
+	--enable-perlinterp=dynamic					\
