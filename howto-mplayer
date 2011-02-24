@@ -1,0 +1,19 @@
+#!/bin/zsh
+exec configure	mplayer							\
+	--enable-joystick						\
+	--enable-radio-capture						\
+	--enable-smb							\
+	--enable-menu							\
+	--enable-ass-internal						\
+	--enable-rpath							\
+	--enable-theora							\
+	--enable-faad							\
+	--enable-xmms							\
+	--enable-hardcoded-tables					\
+	--enable-dynamic-plugins					\
+	--disable-dvdread-internal					\
+	--disable-libdvdcss-internal					\
+	"$@"
+
+	--enable-gui							\
+	--enable-live							\
