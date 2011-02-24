@@ -1,6 +1,12 @@
 #!/bin/zsh
 rm -f configure
-configure pidgin							\
+exec configure pidgin							\
+	--disable-perl							\
+	$@
+# NOTREACHED
+	--disable-tcl							\
 	--disable-avahi							\
 	--disable-meanwhile						\
-	$@
+	--disable-idn							\
+	--disable-nm							\
+	--disable-vv							\
