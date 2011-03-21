@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+./configure								\
+	--msn=0								\
+	--oscar=0							\
+	--otr=0								\
+	--plugins=1							\
+	--prefix=/opt/bitlbee						\
+	--purple=0							\
+	--strip=1							\
+	--systemunitdir=/lib/systemd					\
+	--twitter=1							\
+	"$@"
