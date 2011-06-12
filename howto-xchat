@@ -7,4 +7,7 @@ exec configure xchat							\
 	--enable-shm							\
 	--enable-xft							\
 	--enable-spell=libsexy						\
+	--enable-openssl						\
+	--enable-tcl=/usr/lib64						\
+	--enable-perl=/usr/bin/perl					\
 	"$@"
