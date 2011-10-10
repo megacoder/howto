@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+howto()	{
+	${HOME}/src/h/howto.git/howtos/howto-${1}
+}
