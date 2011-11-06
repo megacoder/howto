@@ -1,0 +1,6 @@
+#!/bin/zsh
+rm -f configure
+configure xosdbiff							\
+	--enable-xosd							\
+	$@
+make -j9
