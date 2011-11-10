@@ -1,21 +1,15 @@
 #!/bin/zsh
 [ ! -x ./configure ]	|| rm -f configure
 [ ! -d autom4te.cache ]	|| rm -rf autom4te.cache
-rm -f configure autom4*
+[ ! -f config.status ]  || rm -rf config.status
+rm -f configure autom4* config.status
 ./autogen.sh --help
 configure conky								\
-	--enable-audacious=yes						\
-	--enable-iostats						\
-	--enable-curl							\
-	--enable-rss							\
-	--enable-xoap							\
-	--enable-weather						\
-	--enable-weather-metar						\
-	--enable-weather-xoap						\
-	--enable-imlib2							\
-	--enable-lua-imlib2						\
-	--enable-lua							\
-	--enable-lua-cairo						\
-	--enable-lua-extras						\
-	--enable-wlan							\
+	--disable-otr							\
+	--enable-ssl=openssl						\
+	--with-gnu-ld							\
 	"$@"
+make -j9
+exit 0
+	--enable-ssl=gnutls+openssl					\
+	--enable-autopackage						\

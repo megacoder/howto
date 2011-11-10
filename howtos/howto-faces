@@ -1,8 +1,6 @@
 #!/bin/zsh
 # vim: sw=8 ts=8
 
-PATH="/opt/e17/bin:${PATH}"
-
 OPTS=
 PKG=$0-opts-$(basename ${PWD})
 # echo "PKG=${PKG}"; exit 1; FIXME
@@ -12,10 +10,14 @@ fi
 
 # echo "OPTS=$OPTS"; exit 1; FIXME
 
-configure e17								\
+configure faces								\
 	CC='ccache gcc'							\
 	CFLAGS='-pipe -Os -m64'						\
 	CPPFLAGS="${CPPFLAGS} -I/opt/e17/include"			\
 	LDFLAGS="${LDFLAGS} -L/opt/e17/lib -L/opt/e17/lib64"		\
+	--disable-nls							\
+	--enable-threads=posix						\
+	--enable-imap							\
+	--enable-pop							\
 	${OPTS}								\
 	"$@"
