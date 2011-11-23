@@ -1,5 +1,11 @@
 #!/bin/zsh
 
 howto()	{
-	${HOME}/src/h/howto.git/howtos/howto-${1}
+	for x in "${1}" generic; do
+		if [ -x ${HOME}/src/h/howto.git/howtos/${x} ]; then
+			${HOME}/src/h/howto.git/howtos/${x}
+			return $?
+		fi
+	done
+	configure "${1}"
 }
