@@ -10,13 +10,17 @@ fi
 
 # echo "OPTS=$OPTS"; exit 1; FIXME
 
+rm -rf configure autom4te.cache
+
 configure faces								\
 	CC='ccache gcc'							\
-	CFLAGS='-pipe -Os -m64'						\
-	CPPFLAGS="${CPPFLAGS} -I/opt/e17/include"			\
-	LDFLAGS="${LDFLAGS} -L/opt/e17/lib -L/opt/e17/lib64"		\
+	CFLAGS='-pipe -Os'						\
+	CPPFLAGS="${CPPFLAGS} -Wall -pedantic"				\
+	LDFLAGS="${LDFLAGS}"						\
 	--disable-nls							\
 	--enable-threads=posix						\
+	--enable-audio							\
+	--enable-dns-lookup						\
 	--enable-imap							\
 	--enable-pop							\
 	${OPTS}								\
