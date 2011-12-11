@@ -1,0 +1,3 @@
+#!/bin/zsh
+[ -d autom4cache ] && rm -rf autom4cache
+configure -m xsel
