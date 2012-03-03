@@ -1,0 +1,10 @@
+#!/bin/zsh
+[ -d autom4cache ] && rm -rf autom4cache
+configure -m weechat							\
+	--enable-gtk							\
+	--disable-ruby							\
+	--disable-lua							\
+	--disable-guile							\
+	--disable-nls							\
+	"$@"
+

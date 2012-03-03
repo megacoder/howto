@@ -1,0 +1,48 @@
+#!/bin/zsh
+[ -d autom4cache ] && rm -rf autom4cache
+configure -m libreoffice						\
+	--with-num-cpus=4						\
+	--with-max-jobs=9						\
+	--without-junit							\
+	--enable-ext-barcode						\
+	--enable-ext-diagram						\
+	--enable-ext-languagetool					\
+	--enable-ext-mysql-connector					\
+	--enable-ext-numbertext						\
+	--enable-ext-pdfimport						\
+	--enable-ext-presenter-console					\
+	--enable-ext-presenter-minimizer				\
+	--enable-ext-typo						\
+	--enable-ext-validator						\
+	--enable-ext-watch-window					\
+	--enable-ext-wiki-publisher					\
+	--enable-ext-mergelibs						\
+	--enable-graphite						\
+	--disable-activex-component					\
+	--enable-evolution2						\
+	--disable-activex						\
+	--enable-python=system						\
+	--enable-split-app-modules					\
+	--enable-librsvg=system						\
+	--enable-dbus							\
+	--enable-gio							\
+	--enable-verbose						\
+	--enable-extra-gallery						\
+	--enable-extra-template						\
+	--enable-extra-font						\
+	--enable-online-update						\
+	--enable-openldap						\
+	--with-theme="default crystal hicontrast oxygen tango classic industrial human" \
+	--with-package-format="native"					\
+	--with-system-libs						\
+	--with-system-headers						\
+	--with-system-cairo						\
+	--with-system-dicts						\
+	--with-system-zlib						\
+	--with-system-openssl						\
+	--with-system-jpeg						\
+	--with-system-expat						\
+	--with-system-poppler						\
+	--with-system-db						\
+	--with-system-mysql						\
+	"$@"
