@@ -1,0 +1,5 @@
+#!/bin/zsh
+../binutils.cvs/configure					\
+	--prefix=gold						\
+	--with-gold=default					\
+	"$@"

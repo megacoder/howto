@@ -1,0 +1,5 @@
+./configure --disable-hardening
+. ./env.sh
+kmk
+cd ./out/linux.amd64/release/bin/src
+make -j12
