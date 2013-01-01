@@ -1,16 +1,11 @@
 ./configure							\
-	--enable-curses 					\
 	--disable-docs	 					\
 	--disable-sparse 					\
-	--enable-io-thread					\
+	--enable-spice	 					\
+	--enable-curses 					\
 	--enable-kvm	 					\
-	--enable-linux-aio 					\
 	--enable-mixemu						\
 	--enable-nptl	 					\
 	--enable-sdl 						\
-	--enable-uuid	 					\
-	--disable-sparse 					\
 	--prefix=/opt/qemu					\
-	--prefix=vnc-tls					\
-	--target-list=x86_64-softmmu				\
 	"$@"

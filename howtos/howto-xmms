@@ -1,0 +1,8 @@
+#!/bin/zsh
+# vi: ts=8 sw=8 noet
+rm -f configure
+autoreconf -fvim
+configure -m "xmms"							\
+	--disable-esd							\
+	--enable-simd							\
+	"$@"

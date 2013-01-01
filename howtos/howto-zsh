@@ -1,5 +1,5 @@
 #!/bin/sh
-# vim: sw=8 ts=8
+# vim: sw=8 ts=8 noet
 
 rm -f configure
 ./Util/preconfig
@@ -7,6 +7,6 @@ rm -f configure
 configure zsh								\
 	--enable-maildir-support					\
 	--enable-cap							\
-	--with-curses-terminfo						\
-	--enable-zsh-debug						\
+	--enable-zsh-mem						\
 	"$@"
+make -j12

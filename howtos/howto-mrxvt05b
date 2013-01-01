@@ -1,0 +1,13 @@
+#!/bin/zsh
+./bootstrap.sh
+configure mrxvt								\
+	--enable-everything						\
+	--enable-maintainer-mode					\
+	--with-tab-radius=300						\
+	--with-save-lines=5000						\
+	--with-atab-extra=25						\
+	--enable-xft							\
+	--enable-menubar						\
+	--enable-24bits							\
+	--enable-frills							\
+	--prefix=/opt/mrxvt

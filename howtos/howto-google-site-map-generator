@@ -1,0 +1,9 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+rm -f configure
+autoreconf -fvim
+configure -m "google-site-map-generator"				\
+	--with-apache-include=/usr/include/httpd			\
+	--with-apr-include=/usr/include/apr-1				\
+    "CXXFLAGS=-Os"                                      \
+	"$@"

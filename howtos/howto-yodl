@@ -1,0 +1,4 @@
+#!/bin/zsh
+# vi: ts=8 sw=8 noet
+cd yodl || exit 1
+./build

@@ -1,1 +1,10 @@
-configure vlc --disable-avcodec --disable-avformat --disable-swscale --disable-postproc
+#!/bin/zsh
+# vim: noet
+configure vlc								\
+	"$@"
+exit 0
+	--enable-loader							\
+	--disable-avcodec						\
+	--disable-avformat						\
+	--disable-swscale						\
+	--disable-postproc						\

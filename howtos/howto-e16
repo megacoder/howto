@@ -7,5 +7,6 @@
 		--disable-nls						\
 		--enable-sound						\
 		--enable-sound-pulse					\
+		--enable-composite					\
 		"$@"
 exit

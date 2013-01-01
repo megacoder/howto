@@ -1,0 +1,18 @@
+#!/bin/sh
+# vim: sw=8 ts=8
+
+rm -f configure
+./autogen.sh								\
+	--with-dbus							\
+	--with-gtkspell							\
+	--with-gkt3							\
+	--with-gnutls							\
+	"$@"
+
+set +x
+configure gnu								\
+	--with-dbus							\
+	--with-gtkspell							\
+	--with-gkt3							\
+	--with-gnutls							\
+	"$@"

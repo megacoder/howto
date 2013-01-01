@@ -1,0 +1,16 @@
+#!/bin/zsh
+rm -f configure
+configure -m aria2							\
+	--enable-bittorrent						\
+	--disable-nls							\
+	--enable-threads=posix						\
+	--with-gnutls							\
+	--with-libnettle						\
+	--with-libgmp							\
+	--with-libgcrypt						\
+	--with-openssl							\
+	--with-libxml2							\
+	--with-libexpat							\
+	--with-libz							\
+	"$@"
+exit 0

@@ -1,4 +1,13 @@
 #!/bin/zsh
+mkdir -p build
+cd build
+rm -f Makefile
+export	CMAKE_INSTALL_PREFIX=/opt/conky
+cmake ../
+make clean
+make -j20
+echo done
+exit 0
 [ ! -x ./configure ]	|| rm -f configure
 [ ! -d autom4te.cache ]	|| rm -rf autom4te.cache
 rm -f configure autom4*
@@ -18,4 +27,5 @@ configure conky								\
 	--enable-lua-cairo						\
 	--enable-lua-extras						\
 	--enable-wlan							\
+	--enable-xmms2							\
 	"$@"

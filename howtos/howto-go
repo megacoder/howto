@@ -1,3 +1,3 @@
 #!/bin/zsh
-PATH=/opt/gccgo/bin:/opt/gold/bin:${PATH}		export PATH
-exec ${1:-../gccgo.svn}/configure --enable-languages=c,c++,go --with-ld=/opt/gold/bin/ld
+PATH=/opt/gccgo/bin:${PATH}		export PATH
+exec ${1:-../gccgo.svn}/configure --enable-languages=c,c++,go --with-ld=/opt/gccgo/bin/ld

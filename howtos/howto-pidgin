@@ -1,12 +1,14 @@
 #!/bin/zsh
-rm -f configure
-exec configure pidgin							\
-	--disable-perl							\
-	$@
+rm -f configure autom4*
+exec configure pidgin                           \
+    --disable-nls                               \
+    --disable-nm                                \
+    --disable-avahi                             \
+    --disable-perl                              \
+    --disable-tcl                               \
+    --with-gtk=2                                \
+    $@
 # NOTREACHED
-	--disable-tcl							\
-	--disable-avahi							\
-	--disable-meanwhile						\
-	--disable-idn							\
-	--disable-nm							\
-	--disable-vv							\
+    --disable-meanwhile                     \
+    --disable-idn                           \
+    -disable-vv                            \
