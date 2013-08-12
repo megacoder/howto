@@ -1,7 +1,7 @@
 TARGETS	=all clean clobber diff distclean import install uninstall
 TARGET	=all
 
-SUBDIRS	=howtos zsh
+SUBDIRS	=howtos
 
 .PHONY:	${TARGETS} ${SUBDIRS}
 
