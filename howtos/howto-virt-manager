@@ -1,0 +1,10 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+configure -m "virt-manager"					\
+	--with-gnu-ld						\
+	--with-libvirt-package-names=libvirt-devel		\
+	--with-preferred-distros=RHEL				\
+	--with-default-graphics=spice				\
+	--with-askpass-package=openssh-askpass			\
+	--with-kvm-packages=libvirt-daemon-kvm			\
+"$@"

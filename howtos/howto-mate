@@ -1,0 +1,8 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+add-package /opt/mate
+PKG_CONFIG_PATH=/opt/mate/share/pkgconfig				\
+ACLOCAL=-I/opt/mate/share/aclocal					\
+	configure -m "mate"						\
+		"$@"
+make -j20

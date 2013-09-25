@@ -4,7 +4,7 @@
 rm -f configure
 ./Util/preconfig
 
-configure zsh								\
+configure -d zsh							\
 	--enable-maildir-support					\
 	--enable-cap							\
 	--enable-zsh-mem						\

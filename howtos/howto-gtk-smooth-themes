@@ -1,0 +1,5 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+configure -m "gtk-smooth-themes"				\
+	--prefix=/usr						\
+	"$@"

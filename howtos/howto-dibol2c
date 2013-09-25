@@ -1,0 +1,4 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+configure -m "dibol2c"							\
+	"$@"

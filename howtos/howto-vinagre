@@ -1,0 +1,14 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvim
+else
+	configure -m "vinagre"						\
+		--disable-applet					\
+		--disable-nls						\
+		--disable-static					\
+		--enable-rdp						\
+		--enable-spice						\
+		--enable-ssh						\
+		"$@"
+fi

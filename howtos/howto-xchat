@@ -1,13 +1,15 @@
 #!/bin/zsh
-rm -rf configure autom4te.cache
-exec configure xchat							\
+# vim: ts=8 sw=8 noet
+
+configure -m "xchat"							\
 	--disable-nls							\
-	--disable-ipv6							\
 	--enable-threads=posix						\
+	--enable-gtkfe							\
+	--enable-textfe							\
+	--enable-perl							\
+	--enable-perl_old						\
 	--enable-shm							\
-	--enable-xft							\
-	--enable-spell=libsexy						\
-	--enable-openssl						\
+	--enable-spell=gtkspell						\
+	--with-gnu-ld							\
 	--enable-tcl=/usr/lib64						\
-	--enable-perl=/usr/bin/perl					\
 	"$@"

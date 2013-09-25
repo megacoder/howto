@@ -1,0 +1,8 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+NAME=e
+PREFIX=/opt/${NAME}
+BINDIR=${PREFIX}/bin
+PATH=${BINDIR}:${PATH}				export	PATH
+configure -m "e"							\
+	"$@"
