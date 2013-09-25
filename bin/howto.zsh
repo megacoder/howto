@@ -1,6 +1,15 @@
 #!/bin/zsh
 ME="${0:t}"
 USAGE="usage: ${ME} [name..]"
+
+edit()	{
+	if [[ -z "${EDITOR}" ]]; then
+		gvim -f "$@"
+	else
+		"${EDITOR}" "$@"
+	fi
+}
+
 PROD="${PWD:a:t:r}"
 PREFIX="${HOME}/src/h/howto.git"
 PATH="${PREFIX}/bin:${PATH}"			export PATH
@@ -14,25 +23,26 @@ while getopts en c; do
 	esac
 done
 shift $(( ${OPTIND} - 1 ))
-if [ $# -gt 0 ]; then
+if [[ $# -gt 0 ]]; then
 	PROD="${1}"
 	shift
 fi
 HOWTO="${HOWTOS}/howto-${PROD}"
-if [ ! -r "${HOWTO}" -o "${NEW}" ]; then
-	if [ "${NEW}" = "create" ]; then
-		sed -e "s/<PROD>/${PROD}/g" >"${HOWTO}" <<EOF
+if [[ ! -r "${HOWTO}" ]]; then
+	sed -e "s/<PROD>/${PROD}/g" >"${HOWTO}" <<EOF
 #!/bin/zsh
-# vi: ts=8 sw=8 noet
-if [ -f configure ]; then
-	autoreconf -fvim
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+autoreconf -fvim
 else
-	configure -m "<PROD>"						\\
-		"\$@"
+configure -m "<PROD>"				\\
+"\$@"
 fi
 EOF
-	fi
-	${EDITOR:-gvim-cvs} "${HOWTO}"
 	chmod 0755 "${HOWTO}"
+	NEW="yes"
+fi
+if [[ "${NEW}" != "" ]]; then
+	edit "${HOWTO}"
 fi
 exec ${HOWTO} "$@" 2>&1 | tee howto.log

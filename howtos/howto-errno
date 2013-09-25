@@ -2,4 +2,5 @@
 # vi: ts=8 sw=8 noet
 rm -f configure
 configure -m "errno"							\
-"$@"
+	--enable-maintainer-mode					\
+	"$@"

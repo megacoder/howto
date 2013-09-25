@@ -3,8 +3,5 @@
 
 PATH=/opt/remmina/bin:$PATH		export PATH
 
-rm -f configure
-configure remmina							\
-	CPPFLAGS=-I/opt/remmina/include					\
-	"$@"
-make -j20
+cmake .
+make

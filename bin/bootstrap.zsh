@@ -26,7 +26,7 @@ elif [ -x ${VPATH}/bootstrap ]; then
 	${VPATH}/bootstrap --help
 else
 	echo "... via autoreconf"
-	autoreconf -fisv ${VPATH}
+	autoreconf -fvim ${VPATH}
 fi
 if [ ! -x ./configure ]; then
 	echo "Could not find or produce a ./configure file!"
@@ -38,5 +38,6 @@ export	CFLAGS='-pipe -Os'
 export	CXX="ccache g++"
 export	CXXFLAGS='-pipe -Os'
 ./configure								\
+	--enable-silent-rules						\
 	$@
 
