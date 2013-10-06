@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ME=${0:t}
-USAGE="usage: ${ME} [-c custom] [-d] [-f] [-j #] [-m] [-n name] [-s std] [-v] [options]"
+USAGE="usage: ${ME} [-c custom] [-d] [-f] [-j #] [-m] [-n name] [-s std] [-v] -- [name [--options]]"
 
 distcc=
 VERBOSE=""
