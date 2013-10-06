@@ -1,5 +1,5 @@
 #!/bin/zsh
-exec configure	mplayer							\
+exec configure -f mplayer						\
 	--enable-smb							\
 	--enable-menu							\
 	--enable-ass-internal						\
@@ -13,5 +13,6 @@ exec configure	mplayer							\
 	--disable-libdvdcss-internal					\
 	--enable-gui							\
 	--enable-live							\
+	--enable-xshape							\
 	"$@"
 
