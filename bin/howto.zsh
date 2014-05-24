@@ -36,7 +36,7 @@ done
 shift $(( ${OPTIND} - 1 ))
 
 PROD="${PWD:a:t:r}"
-PREFIX="${HOME}/src/h/howto.git"
+PREFIX="${HOME}/src/h/howto.github"
 PATH="${PREFIX}/bin:${PATH}"			export PATH
 HOWTOS="${PREFIX}/howtos"
 
