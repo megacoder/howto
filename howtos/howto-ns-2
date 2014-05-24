@@ -1,0 +1,8 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvim
+else
+	configure -m "ns-2"						\
+	"$@"
+fi

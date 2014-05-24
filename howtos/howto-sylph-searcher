@@ -1,0 +1,6 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+configure -m "sylpheed"							\
+	CPPFLAGS='-I/opt/sylpheed/include'				\
+	LDFLAGS='-L/opt/sylpheed/lib -Wl,-rpath,/opt/sylpheed/lib'	\
+	"$@"

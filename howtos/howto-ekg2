@@ -1,6 +1,5 @@
 #!/bin/zsh
-# vi: ts=8 sw=8 noet
-rm -f configure
-autoreconf -fvim
+# vim: ts=8 sw=8 noet
 configure -m "ekg2"							\
-    "$@"
+	--prefix=/usr/local						\
+	"$@"

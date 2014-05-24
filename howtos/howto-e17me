@@ -1,0 +1,4 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+sudo rm -rf tmp src
+make install

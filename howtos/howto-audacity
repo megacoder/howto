@@ -1,6 +1,25 @@
 #!/bin/zsh
 # vim: ts=8 sw=8 noet
 configure -m "audacity"				\
-	--prefix=/usr				\
+	--prefix=/opt				\
+	--disable-nls				\
+	--enable-sse				\
+	--with-expat				\
+	--with-ffmpeg				\
+	--with-lame				\
+	--with-libflac				\
+	--with-libid3tag			\
+	--with-libresample			\
+	--with-libsndfile			\
+	--with-libsoxr				\
+	--with-libtwolame			\
+	--with-libvamp				\
+	--with-libvorbis			\
+	--with-lv2				\
+	--with-midi				\
+	--with-portaudio			\
+	--with-soundtouch			\
 	--enable-static				\
+	--enable-statix-wx			\
+	--disable-dynamic-loading		\
 	"$@"

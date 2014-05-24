@@ -1,25 +1,21 @@
 #!/bin/zsh
 
 ME=${0:t}
-USAGE="usage: ${ME} [-c custom] [-d] [-f] [-j #] [-m] [-n name] [-s std] [-v] -- [name [--options]]"
+USAGE="usage: ${ME} [-c custom] [-d] [-j #] [-m] [-n name] [-v] [options]"
 
-distcc=
+distcc="yes"
 VERBOSE=""
 want_make=
-jobs=12
+jobs=$(rpm -E '%_smp_mflags')
 NAME=${PWD:t}
-FLAGS=wanted
-STD=gnu99
 
 distrib=yes
-while getopts dfj:mn:s:v c; do
+while getopts dj:mn:v c; do
 	case "${c}" in
-	d )	distrib="yes";;
-	f )	FLAGS=;;
-	j )	jobs="${OPTARG}";;
+	d )	distrib=;;
+	j )	jobs="-j${OPTARG}";;
 	m )	want_make=yes;;
 	n )	NAME="${OPTARG}";;
-	s )	STD="${OPTARG}";;
 	v )	VERBOSE="yes";;
 	* )	echo "${USAGE}" >&2; exit 1;;
 	esac
@@ -33,25 +29,22 @@ fi
 
 (
 	echo "Running configure with basic arguments"
-	CC="gcc"
-	CXX="g++"
 	if [[ ! -z "${distrib}" ]]; then
 		export	CCACHE_PREFIX=distcc
-		export	CC="ccache ${CC}"
-		export	CXX="ccache ${CXX}"
+		export	CC="ccache gcc -std=gnu99 -march=native"
+		export	CFLAGS="${CFLAGS} -pipe -Os -D_FORTIFY_SOURCE=2"
+		export	CXX="ccache g++ -march=native"
+		export	CXXFLAGS="${CXXFLAGS} -pipe -Os"
 	else
 		unset	CCACHE_PREFIX
-	fi
-	if [[ -z "${FLAGS}" ]]; then
-		echo "Not setting my most reasonable flags." >&2
-	else
-		export	CC="${CC} -std=${STD}"
-		export	CFLAGS='-march=native -pipe -Os -D_FORTIFY_SOURCE=2'
-		export	CXXFLAGS='-march=native -pipe -Os'
+		export	CC="gcc -std=gnu99 -march=native"
+		export	CFLAGS="${CFLAGS} -pipe -Os -D_FORTIFY_SOURCE=2"
+		export	CXX="g++ -march=native"
+		export	CXXFLAGS="${CXXFLAGS} -pipe -Os"
 	fi
 	#
-	if [ ! -x ./configure ]; then
-		if [[ ! -z "${VERBOSE}" ]]; then
+	if [[ ! -x ./configure ]]; then
+		if [ "${VERBOSE}" ]; then
 			export BOOTSTRAP_VERBOSE=yes
 			bootstrap
 		else
@@ -60,14 +53,9 @@ fi
 		fi
 	fi
 	#
-	if [[ ! -f configure ]]; then
-		echo "${ME} failed to make a './configure' file!" >&2
-		exit 1
-	fi
-	#
 	./configure							\
 		--prefix=/opt/${NAME}					\
 		$@
 
-	[[ ! -z "${want_make}" ]] && make -j${JOBS}
+	[[ ! -z "${want_make}" ]] && make ${JOBS}
 ) 2>&1 | tee "${NAME}-action.log"

@@ -1,0 +1,7 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+configure -m "xosd-lib"							\
+	--disable-gtktest						\
+	--prefix=/usr/local						\
+	CPPFLAGS=-fPIC							\
+	"$@"

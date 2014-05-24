@@ -5,25 +5,22 @@
 mkdir -p auto
 rm -f configure
 configure -m vim							\
+	--with-features=huge						\
+	--enable-pythoninterp=yes					\
+	--enable-tclinterp						\
+	--enable-rubyinterp=yes						\
+	--enable-luainterp=yes						\
 	--enable-cscope							\
-	--enable-gtk2-check						\
-	--enable-gnome-check						\
-	--enable-motif-check						\
-	--enable-athena-check						\
-	--enable-nextaw-check						\
+	--enable-sniff							\
 	--enable-fontset						\
 	--enable-gui=gtk2						\
-	--enable-luainterp=yes						\
-	--enable-pythoninterp=yes					\
-	--enable-rubyinterp=yes						\
-	--enable-perlinterp=yes						\
-	--enable-sniff							\
-	--enable-tclinterp						\
-	--with-features=huge						\
-	CFLAGS='-pipe -g -Os -D_FORTIFY_SOURCE=1'			\
+	--disable-netbeans						\
+	CFLAGS='-pipe -g -O9 -D_FORTIFY_SOURCE=1'			\
 	"$@"
 exit
-	--disable-athena-check						\
 	--disable-nextaw-check						\
-	--enable-gnome-check						\
 	--enable-perlinterp=dynamic					\
+	--enable-gui=nextaw						\
+	--enable-gui=gtk2						\
+	--enable-gui=athena						\
+	--enable-gui=auto						\

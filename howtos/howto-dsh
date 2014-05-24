@@ -1,0 +1,10 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvim
+else
+	export CPPFLAGS='-I/opt/dsh/include'
+	export LDFLAGS='-L/opt/dsh/lib'
+	configure -m "dsh"				\
+	"$@"
+fi

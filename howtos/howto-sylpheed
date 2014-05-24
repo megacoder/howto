@@ -1,7 +1,9 @@
 #!/bin/zsh
 rm -rf configure autom4te.cache
-configure sylpheed							\
+configure -m sylpheed							\
 	--enable-ldap							\
 	--enable-threads						\
 	--enable-oniguruma						\
 	"$@"
+exit 0
+	--disable-ipv6							\
