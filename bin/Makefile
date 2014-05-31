@@ -12,7 +12,7 @@ INSTALL=install
 
 .PHONY: ${TARGETS} ${SUBDIRS}
 
-SCRIPTS	=$(wildcard *.zsh)
+SCRIPTS	=$(wildcard *.zsh) howto.zsh
 
 all::	${SCRIPTS}
 
@@ -20,14 +20,21 @@ ${TARGETS}::
 
 clobber distclean:: clean
 
+howto.zsh:: howto.zsh.in
+	sed -r -e "s;%{HERE};${HOME};g" howto.zsh.in >howto.zsh
+	chmod +x howto.zsh
+
+clean::
+	${RM} howto.zsh
+
 install:: ${SCRIPTS}
-	@for s in ${SCRIPTS}; do					\
+	@for s in howto.zsh ${SCRIPTS}; do				\
 		e=$${s:t:r};						\
 		${SHELL} -xc "${INSTALL} -D $${s} ${BINDIR}/$${e}";	\
 	done
 
 uninstall::
-	${RM} ${BINDIR}/FIXME
+	cd "${BINDIR}" && ${RM} ${SCRIPTS}
 
 ifneq	(,${SUBDIRS})
 ${TARGETS}::
