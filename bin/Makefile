@@ -24,11 +24,11 @@ howto.zsh:: howto.zsh.in
 	sed -r -e "s;<HERE>;${PWD}/..;g" howto.zsh.in >howto.zsh
 	chmod +x howto.zsh
 
-clean::
+clobber::
 	${RM} howto.zsh
 
 install:: ${SCRIPTS}
-	@for s in howto.zsh ${SCRIPTS}; do				\
+	@for s in ${SCRIPTS}; do					\
 		e=$${s:t:r};						\
 		${SHELL} -xc "${INSTALL} -D $${s} ${BINDIR}/$${e}";	\
 	done
