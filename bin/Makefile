@@ -21,7 +21,7 @@ ${TARGETS}::
 clobber distclean:: clean
 
 howto.zsh:: howto.zsh.in
-	sed -r -e "s;%{HERE};${HOME};g" howto.zsh.in >howto.zsh
+	sed -r -e "s;<HERE>;${PWD}/..;g" howto.zsh.in >howto.zsh
 	chmod +x howto.zsh
 
 clean::

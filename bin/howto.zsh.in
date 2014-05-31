@@ -36,7 +36,7 @@ done
 shift $(( ${OPTIND} - 1 ))
 
 PROD="${PWD:a:t:r}"
-PREFIX='%{HERE}'
+PREFIX='<HERE>'
 PATH="${PREFIX}/bin:${PATH}"			export PATH
 HOWTOS="${PREFIX}/howtos"
 
