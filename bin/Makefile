@@ -30,7 +30,7 @@ clobber::
 install:: ${SCRIPTS}
 	@for s in ${SCRIPTS}; do					\
 		e=$${s:t:r};						\
-		${SHELL} -xc "${INSTALL} -D $${s} ${BINDIR}/$${e}";	\
+		${SHELL} -c "${INSTALL} -D $${s} ${BINDIR}/$${e}";	\
 	done
 
 uninstall::
