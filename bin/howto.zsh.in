@@ -2,6 +2,15 @@
 ME="${0:t}"
 USAGE="usage: ${ME} [name..]"
 
+PROD="${PWD:a:t:r}"
+
+PREFIX='<MYDIR>'
+BINDIR="${PREFIX}/bin"
+HOWTOS="${PREFIX}/howtos"
+HOWTO="${HOWTOS}/howto-${PROD}"
+
+PATH="${BINDIR}:${PATH}"			export PATH
+
 edit()	{
 	if [[ -z "${EDITOR}" ]]; then
 		gvim -f "${HOWTO}"
@@ -17,7 +26,7 @@ setup()	{
 if [[ -f configure ]]; then
 	autoreconf -fvim
 else
-	configure -m "<PROD>"						\
+	configure -m '<PROD>'						\
 	"$@"
 fi
 EOF
@@ -34,15 +43,6 @@ while getopts eln c; do
 	esac
 done
 shift $(( ${OPTIND} - 1 ))
-
-PROD="${PWD:a:t:r}"
-
-PREFIX='<PREFIX>'
-BINDIR="${PREFIX}/bin"
-HOWTOS="${PREFIX}/howtos"
-HOWTO="${HOWTOS}/howto-${PROD}"
-
-PATH="${BINDIR}:${PATH}"			export PATH
 
 if [[ $# -gt 0 ]]; then
 	PROD="${1}"

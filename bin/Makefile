@@ -8,7 +8,7 @@ SUBDIRS=
 SHELL	=/bin/zsh
 export	SHELL
 
-PREFIX	=$(shell dirname $$(/bin/pwd))
+MYDIR	=$(shell dirname $$(/bin/pwd))
 
 INSTALL	=install
 
@@ -23,16 +23,16 @@ ${TARGETS}::
 clobber distclean:: clean
 
 howto.zsh:: howto.zsh.in
-	sed -r -e "s;<PREFIX>;${PREFIX};g" howto.zsh.in >howto.zsh
+	sed -r -e "s;<MYDIR>;${MYDIR};g" howto.zsh.in >howto.zsh
 	chmod +x howto.zsh
 
 clobber::
 	${RM} howto.zsh
 
 install:: ${SCRIPTS}
-	@for s in ${SCRIPTS}; do					\
+	for s in ${SCRIPTS}; do						\
 		e=$${s:t:r};						\
-		${SHELL} -c "${INSTALL} -D $${s} ${BINDIR}/$${e}";	\
+		${INSTALL} -D "$${s}" "${BINDIR}/$${e}";		\
 	done
 
 uninstall::
