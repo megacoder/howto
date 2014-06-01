@@ -36,16 +36,19 @@ done
 shift $(( ${OPTIND} - 1 ))
 
 PROD="${PWD:a:t:r}"
-PREFIX='<HERE>'
-PATH="${PREFIX}/bin:${PATH}"			export PATH
+
+PREFIX='<PREFIX>'
+BINDIR="${PREFIX}/bin"
 HOWTOS="${PREFIX}/howtos"
+HOWTO="${HOWTOS}/howto-${PROD}"
+
+PATH="${BINDIR}:${PATH}"			export PATH
 
 if [[ $# -gt 0 ]]; then
 	PROD="${1}"
 	shift
 fi
 
-HOWTO="${HOWTOS}/howto-${PROD}"
 case "${ACTION}" in
 run )
 	if [[ ! -f "${HOWTO}" ]]; then

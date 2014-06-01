@@ -8,11 +8,13 @@ SUBDIRS=
 SHELL	=/bin/zsh
 export	SHELL
 
-INSTALL=install
+PREFIX	=$(shell dirname $$(/bin/pwd))
+
+INSTALL	=install
 
 .PHONY: ${TARGETS} ${SUBDIRS}
 
-SCRIPTS	=$(wildcard *.zsh) howto.zsh
+SCRIPTS	:=$(wildcard *.zsh) howto.zsh
 
 all::	${SCRIPTS}
 
@@ -21,7 +23,7 @@ ${TARGETS}::
 clobber distclean:: clean
 
 howto.zsh:: howto.zsh.in
-	sed -r -e "s;<HERE>;${PWD}/..;g" howto.zsh.in >howto.zsh
+	sed -r -e "s;<PREFIX>;${PREFIX};g" howto.zsh.in >howto.zsh
 	chmod +x howto.zsh
 
 clobber::
