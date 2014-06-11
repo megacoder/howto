@@ -34,11 +34,12 @@ EOF
 }
 
 ACTION="run"
-while getopts eln c; do
+while getopts elnr c; do
 	case "${c}" in
 	e )	ACTION="edit";;
 	l )	ACTION="list";;
 	n )	ACTION="create";;
+	r )	ACTION="remove";;
 	* )	echo "${USAGE}" >&2; exit 1;;
 	esac
 done
@@ -67,6 +68,10 @@ edit )
 	;;
 list )
 	cat   "${HOWTO}"
+	exit 0
+	;;
+remove )
+	rm -f "${HOWTO}"
 	exit 0
 	;;
 esac
