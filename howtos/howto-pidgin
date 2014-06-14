@@ -1,14 +1,38 @@
 #!/bin/zsh
-rm -f configure autom4*
-exec configure pidgin                           \
-    --disable-nls                               \
-    --disable-nm                                \
-    --disable-avahi                             \
-    --disable-perl                              \
-    --disable-tcl                               \
-    --with-gtk=2                                \
-    $@
+# vim: noet sw=8 ts=8
+rm -rf ***/configure ***/autom4* **/Makefile
+./autogen.sh								\
+	--prefix=/opt/pidgin						\
+	--disable-nls							\
+	--disable-consoleui						\
+	--disable-nm							\
+	--with-gtk=2							\
+	--disable-kwallet						\
+	--enable-cap							\
+	--enable-mono							\
+	--enable-nss							\
+	--with-x							\
+	$@
+make
+exit 1
+
+exec configure pidgin							\
+	--disable-nls							\
+	--disable-consoleui						\
+	--disable-nm							\
+	--with-gtk=2							\
+	--disable-kwallet						\
+	--enable-cap							\
+	--enable-mono							\
+	--enable-nss							\
+	--with-x							\
+	$@
+
 # NOTREACHED
-    --disable-meanwhile                     \
-    --disable-idn                           \
-    -disable-vv                            \
+	--disable-meanwhile						\
+	--disable-idn							\
+	-disable-vv							\
+	--disable-perl							\
+	--disable-tcl							\
+	--disable-avahi							\
+	--enable-gcr							\
