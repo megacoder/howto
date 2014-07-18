@@ -1,0 +1,284 @@
+2014-07-18  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/howto.zsh.in: Change to a more state-machine style.
+
+2014-07-18  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/howto.zsh: Don't archive generated files.
+
+2014-07-18  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-firewalld, howtos/howto-jEdit, howtos/howto-sudo: 
+	More scripts
+
+2014-06-14  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-mrxvt, howtos/howto-pidgin, howtos/howto-smuxi: 
+	Checkpoint
+
+2014-06-11  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/howto.zsh: Added "-r" to remove the existing recipie.
+
+2014-06-01  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-jj, howtos/howto-loudmouth: Added jj(1) and loudmouth
+	library.
+
+2014-06-01  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/configure.zsh, bin/howto.zsh: Offical
+
+2014-06-01  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/configure.zsh: Don't need extra file.
+
+2014-06-01  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/Makefile, bin/howto.zsh.in: Whew, harder than I thought to
+	compute the runtime addres of the howto library.
+
+2014-06-01  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/Makefile, bin/howto.zsh.in: Figure out the working directory
+	and path to the howto's a bit cleaner.
+
+2014-05-31  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/Makefile: Disable insertion tracing.
+
+2014-05-31  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/Makefile: Avoid duplication.
+
+2014-05-31  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/Makefile, bin/howto.zsh.in: Substitution
+
+2014-05-31  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/Makefile, bin/howto.zsh, bin/howto.zsh.in: Compute the howto
+	scripts address.
+
+2014-05-24  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/bootstrap.zsh, howtos/howto-vtree: Cleanup
+
+2014-05-24  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/howto.zsh: Migrated to use the github version.
+
+2014-05-24  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-reynolds: Goner
+
+2014-05-24  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/bootstrap.zsh, bin/configure.zsh, bin/howto.zsh,
+	howtos/howto-audacity, howtos/howto-crampf-0, howtos/howto-dsh,
+	howtos/howto-e17me, howtos/howto-ekg2, howtos/howto-monkey,
+	howtos/howto-mplayer, howtos/howto-mrxvt05b,
+	howtos/howto-networkmanager, howtos/howto-ns-2,
+	howtos/howto-pidgin-save-conv-order, howtos/howto-pwgen,
+	howtos/howto-remap, howtos/howto-reynolds,
+	howtos/howto-rxvt-unicode, howtos/howto-sylph-searcher,
+	howtos/howto-sylpheed, howtos/howto-tinyproxy,
+	howtos/howto-topvhost-0, howtos/howto-uncrustify,
+	howtos/howto-urxvt, howtos/howto-vim, howtos/howto-vtree,
+	howtos/howto-xosd-lib, howtos/howto-zshdb: Was updating up the wrong
+	tree.
+
+2013-10-25  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-ocrfeeder, howtos/howto-sylpheed, howtos/howto-vim,
+	howtos/howto-xcursorgen, howtos/howto-xscreensaver-5: Checkpoint
+
+2013-10-06  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/configure.zsh: Corrected usage for '-- [name [--options]]'
+
+2013-10-06  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-hexchat, howtos/howto-pidgin-cmds: Checkpoint
+
+2013-10-06  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/configure.zsh, howtos/howto-mplayer, howtos/howto-vtree: Added
+	'-f' to turn off our flag contributions since mplayer bitches.
+
+2013-09-25  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* : Reconciled
+
+2013-09-25  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* Makefile, README.md, bin/bootstrap.zsh, bin/howto.zsh,
+	howtos/howto-audacity, howtos/howto-burg, howtos/howto-configure,
+	howtos/howto-dibol2c, howtos/howto-dow, howtos/howto-dumpf,
+	howtos/howto-e, howtos/howto-e16, howtos/howto-e16-epplets,
+	howtos/howto-errno, howtos/howto-ffmpeg,
+	howtos/howto-gtk-smooth-themes, howtos/howto-jikes,
+	howtos/howto-libxosd, howtos/howto-mate,
+	howtos/howto-mate-window-manager, howtos/howto-mkmacro,
+	howtos/howto-mosh, howtos/howto-mplayer,
+	howtos/howto-mplayer-player, howtos/howto-remmina,
+	howtos/howto-streamripper, howtos/howto-talkfilters,
+	howtos/howto-vimpc, howtos/howto-vinagre,
+	howtos/howto-virt-manager, howtos/howto-xchat, howtos/howto-xmms,
+	howtos/howto-xmms-osd, howtos/howto-xmms-shell, howtos/howto-xosd,
+	howtos/howto-xv, howtos/howto-zsh: Merged from private repository
+
+2013-08-11  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* Makefile: No steenkin 'zsh/' directory.
+
+2013-01-01  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-aqemu, howtos/howto-aria2, howtos/howto-ca-svn,
+	howtos/howto-conky, howtos/howto-dasher, howtos/howto-e16,
+	howtos/howto-e16menuedit, howtos/howto-ekg2, howtos/howto-errno,
+	howtos/howto-gdeskcal, howtos/howto-go,
+	howtos/howto-google-site-map-generator, howtos/howto-libvncserver,
+	howtos/howto-mrxvt05b, howtos/howto-nmap, howtos/howto-oss,
+	howtos/howto-pan, howtos/howto-pan2, howtos/howto-pidgin,
+	howtos/howto-proxyt, howtos/howto-qemu, howtos/howto-remmina,
+	howtos/howto-rsync, howtos/howto-tilda, howtos/howto-tmux,
+	howtos/howto-vlc, howtos/howto-vlm-tool, howtos/howto-vtree,
+	howtos/howto-xmms, howtos/howto-yodl, howtos/howto-zsh: A few more
+	rules.
+
+2013-01-01  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* zsh/Makefile, zsh/howto: Goners!
+
+2013-01-01  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* bin/Makefile, bin/bootstrap.zsh, bin/configure.zsh, bin/howto.zsh: 
+	Move stuff into shell scripts.
+
+2013-01-01  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-fuse-google-drive: WIP
+
+2012-03-31  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-go, howtos/howto-gold, howtos/howto-vbox: More
+
+2012-03-02  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-libreoffice, howtos/howto-weechat: Checkpoint
+
+2011-12-10  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-xsel: Checkpoint
+
+2011-11-23  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-generic, zsh/howto: Flesh out missing stuff via a
+	template
+
+2011-11-23  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-faces: Checkpoint
+
+2011-11-23  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-generic, zsh/howto: Provide a default setup if none
+	exists
+
+2011-11-10  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-climm, howtos/howto-faces, howtos/howto-xosdbiff: 
+	Checkpoint
+
+2011-11-10  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-faces: Baseline
+
+2011-11-06  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-xosdbiff: Let it rock.
+
+2011-10-30  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-climm: Command-line Instant Messenger
+
+2011-10-15  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-irssi: Modified
+
+2011-10-15  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howtos/howto-irssi: IRSSI
+
+2011-10-10  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* Makefile, howto-ayttm, howto-bitlbee, howto-conky, howto-curl,
+	howto-distcc, howto-e16, howto-e17, howto-e17-opts-evas,
+	howto-eterm, howto-exif, howto-go, howto-insight, howto-mplayer,
+	howto-mrxvt, howto-pidgin, howto-purple-plugin-pack, howto-qemu,
+	howto-smooth, howto-sudosh, howto-sylpheed,
+	howto-sylpheed-searcher, howto-vim, howto-vlc, howto-xchat,
+	howto-zsh, howtos/Makefile, howtos/howto-ayttm,
+	howtos/howto-bitlbee, howtos/howto-conky, howtos/howto-curl,
+	howtos/howto-distcc, howtos/howto-e16, howtos/howto-e17,
+	howtos/howto-e17-opts-evas, howtos/howto-eterm, howtos/howto-exif,
+	howtos/howto-go, howtos/howto-insight, howtos/howto-mplayer,
+	howtos/howto-mrxvt, howtos/howto-pidgin,
+	howtos/howto-purple-plugin-pack, howtos/howto-qemu,
+	howtos/howto-smooth, howtos/howto-sudosh, howtos/howto-sylpheed,
+	howtos/howto-sylpheed-searcher, howtos/howto-vim, howtos/howto-vlc,
+	howtos/howto-xchat, howtos/howto-zsh, zsh/Makefile, zsh/howto: 
+	Changed directory layout.
+
+2011-06-12  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howto-xchat: xchat
+
+2011-06-12  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* : commit c5d9d9babeaa4cb8d25953ed1e48aad9564d9b42 Author: Tommy
+	Reynolds <Tommy.Reynolds@MegaCoder.com> Date:   Sun Jun 12 12:00:42
+	2011 -0500
+
+2011-03-21  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howto-bitlbee: Bitlbee -- IRC<->XMPP gateway
+
+2011-02-24  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howto-mplayer: Checkpoint
+
+2011-02-24  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howto-pidgin: Maximal build from SCM files.  No PERL!
+
+2011-02-12  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* : commit ccbde811030e39a21cab27c076c26cc4db347524 Author: Tommy
+	Reynolds <Tommy.Reynolds@MegaCoder.com> Date:   Sat Feb 12 08:31:16
+	2011 -0600
+
+2011-01-12  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* : commit 0bb63a132e3e7b4c9a4380ec055548387e931ea0 Author: Tommy
+	Reynolds <Tommy.Reynolds@MegaCoder.com> Date:   Sun Dec 26 18:09:23
+	2010 -0600
+
+2010-12-26  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howto-conky: Well, conky(1)
+
+2010-12-25  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howto-sylpheed, howto-vim: Checkpoint
+
+2010-12-25  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* howto-conky: Need to recompile conky and enable nearly
+	everything...
+
+2010-09-21  Tommy Reynolds <Tommy.Reynolds@MegaCoder.com>
+
+	* Converted to git
+
