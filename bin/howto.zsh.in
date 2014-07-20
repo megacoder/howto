@@ -24,10 +24,10 @@ setup()	{
 #!/bin/zsh
 # vim: ts=8 sw=8 noet
 if [[ -f configure ]]; then
-\	autoreconf -fvim
+	autoreconf -fvim
 else
-\	configure -m '<PROD>'						\
-\	"$@"
+	configure -m '<PROD>'						\
+	"$@"
 fi
 EOF
 	chmod 0755 "${HOWTO}"
