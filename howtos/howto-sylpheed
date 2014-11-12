@@ -1,9 +1,10 @@
 #!/bin/zsh
 rm -rf configure autom4te.cache
-configure -m sylpheed							\
+./autogen.sh --prefix=/opt/sylpheed					\
 	--enable-ldap							\
 	--enable-threads						\
 	--enable-oniguruma						\
-	"$@"
-exit 0
 	--disable-ipv6							\
+	"$@"
+make -j4
+exit 0

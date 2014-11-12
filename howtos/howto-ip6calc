@@ -1,0 +1,11 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvim
+else
+	configure -m 'ip6calc'						\
+		--enable-geoip						\
+		--enable-ip2location					\
+		--prefix=/usr/local					\
+		"$@"
+fi
