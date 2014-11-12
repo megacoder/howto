@@ -7,7 +7,7 @@ distcc="yes"
 VERBOSE=""
 want_make=
 jobs=$(rpm -E '%_smp_mflags')
-NAME=${PWD:t}
+NAME=${PWD:t:r}
 
 distrib=yes
 while getopts dj:mn:v c; do
