@@ -9,4 +9,4 @@ configure -d zsh							\
 	--enable-cap							\
 	--enable-zsh-mem						\
 	"$@"
-make -j12
+make -j20

@@ -4,7 +4,7 @@
 [ -d auto ] && rm -rf auto/config.cache
 mkdir -p auto
 rm -f configure
-configure -m vim							\
+configure vim								\
 	--with-features=huge						\
 	--enable-pythoninterp=yes					\
 	--enable-tclinterp						\
@@ -17,6 +17,7 @@ configure -m vim							\
 	--disable-netbeans						\
 	CFLAGS='-pipe -g -O9 -D_FORTIFY_SOURCE=1'			\
 	"$@"
+make -j20
 exit
 	--disable-nextaw-check						\
 	--enable-perlinterp=dynamic					\
