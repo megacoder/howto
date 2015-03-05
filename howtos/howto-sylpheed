@@ -6,5 +6,5 @@ rm -rf configure autom4te.cache
 	--enable-oniguruma						\
 	--disable-ipv6							\
 	"$@"
-make -j4
+make -j10
 exit 0

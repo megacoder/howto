@@ -8,5 +8,6 @@ configure -d zsh							\
 	--enable-maildir-support					\
 	--enable-cap							\
 	--enable-zsh-mem						\
+	--prefix=/home/treynold/usr					\
 	"$@"
-make -j12
+make -j20

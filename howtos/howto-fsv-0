@@ -1,0 +1,9 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvim
+else
+	configure -m 'fsv'						\
+		--with-lib-MesaGL					\
+	"$@"
+fi
