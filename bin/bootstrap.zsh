@@ -25,9 +25,9 @@ if [[ ! -x ./configure ]]; then
 	exit 1
 fi
 echo "Running configure with default arguments"
-export	CC="ccache gcc -std=gnu99 -march=native"
+export	CC="gcc -std=gnu99 -march=native"
 export	CFLAGS="${CFLAGS} -pipe -Os"
-export	CXX="ccache g++"
+export	CXX="g++ -march=native"
 export	CXXFLAGS="${CXXFLAGS} -pipe -Os"
 ./configure								\
 	--enable-silent-rules						\
