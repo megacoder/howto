@@ -1,0 +1,12 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvim
+else
+	configure -m 'rpm'						\
+		--enable-silent-rules					\
+		--disable-nls						\
+		--disable-python					\
+		--with-archive						\
+		"$@"
+fi

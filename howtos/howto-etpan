@@ -1,0 +1,275 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+add-package /opt/etpan
+PREFIX=/opt/etpan
+if [[ -f configure ]]; then
+	autoreconf -fvim
+else
+	configure -m 'etpan'						\
+		--libdir=${PREFIX}/lib64				\
+		--disable-ipv6						\
+		--disable-nls						\
+		--disable-manual					\
+		--prefix="${PREFIX}"					\
+		"$@"
+fi
+`configure' configures this package to adapt to many kinds of systems.
+
+Usage: ./configure [OPTION]... [VAR=VALUE]...
+
+To assign environment variables (e.g., CC, CFLAGS...), specify them as
+VAR=VALUE.  See below for descriptions of some of the useful variables.
+
+Defaults for the options are specified in brackets.
+
+Configuration:
+  -h, --help              display this help and exit
+      --help=short        display options specific to this package
+      --help=recursive    display the short help of all the included packages
+  -V, --version           display version information and exit
+  -q, --quiet, --silent   do not print `checking ...' messages
+      --cache-file=FILE   cache test results in FILE [disabled]
+  -C, --config-cache      alias for `--cache-file=config.cache'
+  -n, --no-create         do not create output files
+      --srcdir=DIR        find the sources in DIR [configure dir or `..']
+
+Installation directories:
+  --prefix=PREFIX         install architecture-independent files in PREFIX
+                          [/usr/local]
+  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+                          [PREFIX]
+
+By default, `make install' will install all the files in
+`/usr/local/bin', `/usr/local/lib' etc.  You can specify
+an installation prefix other than `/usr/local' using `--prefix',
+for instance `--prefix=$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --bindir=DIR            user executables [EPREFIX/bin]
+  --sbindir=DIR           system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR        program executables [EPREFIX/libexec]
+  --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --libdir=DIR            object code libraries [EPREFIX/lib]
+  --includedir=DIR        C header files [PREFIX/include]
+  --oldincludedir=DIR     C header files for non-gcc [/usr/include]
+  --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]
+  --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
+  --infodir=DIR           info documentation [DATAROOTDIR/info]
+  --localedir=DIR         locale-dependent data [DATAROOTDIR/locale]
+  --mandir=DIR            man documentation [DATAROOTDIR/man]
+  --docdir=DIR            documentation root [DATAROOTDIR/doc/PACKAGE]
+  --htmldir=DIR           html documentation [DOCDIR]
+  --dvidir=DIR            dvi documentation [DOCDIR]
+  --pdfdir=DIR            pdf documentation [DOCDIR]
+  --psdir=DIR             ps documentation [DOCDIR]
+
+Program names:
+  --program-prefix=PREFIX            prepend PREFIX to installed program names
+  --program-suffix=SUFFIX            append SUFFIX to installed program names
+  --program-transform-name=PROGRAM   run sed PROGRAM on installed program names
+
+System types:
+  --build=BUILD     configure for building on BUILD [guessed]
+  --host=HOST       cross-compile to build programs to run on HOST [BUILD]
+  --target=TARGET   configure for building compilers for TARGET [HOST]
+
+Optional Features:
+  --disable-option-checking  ignore unrecognized --enable/--with options
+  --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
+  --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
+  --enable-silent-rules   less verbose build output (undo: "make V=1")
+  --disable-silent-rules  verbose build output (undo: "make V=0")
+  --enable-maintainer-mode
+                          enable make rules and dependencies not useful (and
+                          sometimes confusing) to the casual installer
+  --enable-dependency-tracking
+                          do not reject slow dependency extractors
+  --disable-dependency-tracking
+                          speeds up one-time build
+  --enable-shared[=PKGS]  build shared libraries [default=yes]
+  --enable-static[=PKGS]  build static libraries [default=yes]
+  --enable-fast-install[=PKGS]
+                          optimize for fast installation [default=yes]
+  --disable-libtool-lock  avoid locking (might break parallel builds)
+  --disable-largefile     omit support for large files
+  --disable-rpath         do not hardcode runtime library paths
+  --disable-nls           do not use Native Language Support
+  --disable-manual                Do not build user manual
+  --disable-libsm                 Do not build libSM support for session management
+  --disable-ipv6                  Do not build IPv6 support
+  --disable-gnutls                Do not build GnuTLS support for SSL/TLS
+  --disable-enchant               Do not build Enchant support for spell-checking
+  --enable-crash-dialog           Build crash dialog
+  --enable-generic-umpc           Build generic UMPC code
+  --disable-compface              Do not build compface support for X-Face
+  --disable-pthread               Do not build pthread support
+  --disable-startup-notification  Do not startup notification support
+  --disable-dbus                  Do not build DBUS support
+  --disable-ldap                  Do not build LDAP support
+  --disable-jpilot                Do not build JPilot support
+  --disable-networkmanager        Do not build NetworkManager support
+  --disable-libetpan              Do not build libetpan support for IMAP4/NNTP
+  --disable-valgrind              Do not build valgrind support for debugging
+  --enable-new-addrbook           Build new external address book support
+  --enable-gtk3                   Build GTK3 support
+  --disable-deprecated            Disable deprecated GTK functions
+  --disable-acpi_notifier-plugin  Do not build acpi_notifier plugin
+  --disable-address_keeper-plugin Do not build address_keeper plugin
+  --disable-archive-plugin        Do not build archive plugin
+  --disable-att_remover-plugin    Do not build att_remover plugin
+  --disable-attachwarner-plugin   Do not build attachwarner plugin
+  --disable-bogofilter-plugin     Do not build bogofilter plugin
+  --disable-bsfilter-plugin       Do not build bsfilter plugin
+  --disable-clamd-plugin          Do not build clamd plugin
+  --disable-fancy-plugin          Do not build fancy plugin
+  --disable-fetchinfo-plugin      Do not build fetchinfo plugin
+  --disable-gdata-plugin          Do not build gdata plugin
+  --disable-geolocation-plugin    Do not build geolocation plugin
+  --disable-libravatar-plugin     Do not build libravatar  plugin
+  --disable-mailmbox-plugin       Do not build mailmbox plugin
+  --disable-managesieve-plugin       Do not build managesieve plugin
+  --disable-newmail-plugin        Do not build newmail plugin
+  --disable-notification-plugin   Do not build notification plugin
+  --disable-pdf_viewer-plugin     Do not build pdf_viewer plugin
+  --disable-perl-plugin           Do not build perl plugin
+  --disable-python-plugin         Do not build python plugin
+  --disable-pgpcore-plugin        Do not build pgpcore plugin
+  --disable-pgpmime-plugin        Do not build pgpmime plugin
+  --disable-pgpinline-plugin      Do not build pgpinline plugin
+  --disable-rssyl-plugin          Do not build rssyl plugin
+  --disable-smime-plugin          Do not build smime plugin
+  --disable-spamassassin-plugin   Do not build spamassassin plugin
+  --disable-spam_report-plugin    Do not build spam_report plugin
+  --disable-tnef_parse-plugin     Do not build tnef_parse plugin
+  --disable-vcalendar-plugin      Do not build vcalendar plugin
+  --enable-demo-plugin		Build demo plugin
+
+Optional Packages:
+  --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+  --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+  --with-lib-prefix[=DIR] search for libraries in DIR/include and DIR/lib
+  --without-lib-prefix    don't search for libraries in includedir and libdir
+  --with-pic[=PKGS]       try to use only PIC/non-PIC objects [default=use
+                          both]
+  --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
+  --with-sysroot=DIR Search for dependent libraries within DIR
+                        (or the compiler's sysroot if not specified).
+  --with-gnu-ld           assume the C compiler uses GNU ld default=no
+  --with-libiconv-prefix[=DIR]  search for libiconv in DIR/include and DIR/lib
+  --without-libiconv-prefix     don't search for libiconv in includedir and libdir
+  --with-libintl-prefix[=DIR]  search for libintl in DIR/include and DIR/lib
+  --without-libintl-prefix     don't search for libintl in includedir and libdir
+  --with-manualdir=DIR    Manual directory
+  --with-passcrypt-key=KEY     Key used to encode passwords (8 byte string)
+  --with-config-dir=RCDIR      Local configuration dir (default: .claws-mail)
+  --with-gpgme-prefix=PFX prefix where GPGME is installed (optional)
+
+Some influential environment variables:
+  PKG_CONFIG  path to pkg-config utility
+  PKG_CONFIG_PATH
+              directories to add to pkg-config's search path
+  PKG_CONFIG_LIBDIR
+              path overriding pkg-config's built-in search path
+  GNOME2_CFLAGS
+              C compiler flags for GNOME2, overriding pkg-config
+  GNOME2_LIBS linker flags for GNOME2, overriding pkg-config
+  CC          C compiler command
+  CFLAGS      C compiler flags
+  LDFLAGS     linker flags, e.g. -L<lib dir> if you have libraries in a
+              nonstandard directory <lib dir>
+  LIBS        libraries to pass to the linker, e.g. -l<library>
+  CPPFLAGS    (Objective) C/C++ preprocessor flags, e.g. -I<include dir> if
+              you have headers in a nonstandard directory <include dir>
+  CPP         C preprocessor
+  YACC        The `Yet Another Compiler Compiler' implementation to use.
+              Defaults to the first program found out of: `bison -y', `byacc',
+              `yacc'.
+  YFLAGS      The list of arguments that will be passed by default to $YACC.
+              This script will default YFLAGS to the empty string to avoid a
+              default value of `-d' given by some make applications.
+  GLIB_CFLAGS C compiler flags for GLIB, overriding pkg-config
+  GLIB_LIBS   linker flags for GLIB, overriding pkg-config
+  GNUTLS_CFLAGS
+              C compiler flags for GNUTLS, overriding pkg-config
+  GNUTLS_LIBS linker flags for GNUTLS, overriding pkg-config
+  GTK_CFLAGS  C compiler flags for GTK, overriding pkg-config
+  GTK_LIBS    linker flags for GTK, overriding pkg-config
+  ENCHANT_CFLAGS
+              C compiler flags for ENCHANT, overriding pkg-config
+  ENCHANT_LIBS
+              linker flags for ENCHANT, overriding pkg-config
+  STARTUP_NOTIFICATION_CFLAGS
+              C compiler flags for STARTUP_NOTIFICATION, overriding pkg-config
+  STARTUP_NOTIFICATION_LIBS
+              linker flags for STARTUP_NOTIFICATION, overriding pkg-config
+  DBUS_CFLAGS C compiler flags for DBUS, overriding pkg-config
+  DBUS_LIBS   linker flags for DBUS, overriding pkg-config
+  CONTACTS_CFLAGS
+              C compiler flags for CONTACTS, overriding pkg-config
+  CONTACTS_LIBS
+              linker flags for CONTACTS, overriding pkg-config
+  NETWORKMANAGER_SUPPORT_CFLAGS
+              C compiler flags for NETWORKMANAGER_SUPPORT, overriding
+              pkg-config
+  NETWORKMANAGER_SUPPORT_LIBS
+              linker flags for NETWORKMANAGER_SUPPORT, overriding pkg-config
+  VALGRIND_CFLAGS
+              C compiler flags for VALGRIND, overriding pkg-config
+  VALGRIND_LIBS
+              linker flags for VALGRIND, overriding pkg-config
+  CURL_CFLAGS C compiler flags for CURL, overriding pkg-config
+  CURL_LIBS   linker flags for CURL, overriding pkg-config
+  EXPAT_CFLAGS
+              C compiler flags for EXPAT, overriding pkg-config
+  EXPAT_LIBS  linker flags for EXPAT, overriding pkg-config
+  WEBKIT_CFLAGS
+              C compiler flags for WEBKIT, overriding pkg-config
+  WEBKIT_LIBS linker flags for WEBKIT, overriding pkg-config
+  LIBSOUP_CFLAGS
+              C compiler flags for LIBSOUP, overriding pkg-config
+  LIBSOUP_LIBS
+              linker flags for LIBSOUP, overriding pkg-config
+  LIBSOUP_GNOME_CFLAGS
+              C compiler flags for LIBSOUP_GNOME, overriding pkg-config
+  LIBSOUP_GNOME_LIBS
+              linker flags for LIBSOUP_GNOME, overriding pkg-config
+  GDATA_CFLAGS
+              C compiler flags for GDATA, overriding pkg-config
+  GDATA_LIBS  linker flags for GDATA, overriding pkg-config
+  POPPLER_CFLAGS
+              C compiler flags for POPPLER, overriding pkg-config
+  POPPLER_LIBS
+              linker flags for POPPLER, overriding pkg-config
+  PYTHON      the Python interpreter
+  PYGTK_CFLAGS
+              C compiler flags for PYGTK, overriding pkg-config
+  PYGTK_LIBS  linker flags for PYGTK, overriding pkg-config
+  libnotify_CFLAGS
+              C compiler flags for libnotify, overriding pkg-config
+  libnotify_LIBS
+              linker flags for libnotify, overriding pkg-config
+  libcanberra_gtk_CFLAGS
+              C compiler flags for libcanberra_gtk, overriding pkg-config
+  libcanberra_gtk_LIBS
+              linker flags for libcanberra_gtk, overriding pkg-config
+  libindicate_CFLAGS
+              C compiler flags for libindicate, overriding pkg-config
+  libindicate_LIBS
+              linker flags for libindicate, overriding pkg-config
+  CM_NP_HOTKEY_CFLAGS
+              C compiler flags for CM_NP_HOTKEY, overriding pkg-config
+  CM_NP_HOTKEY_LIBS
+              linker flags for CM_NP_HOTKEY, overriding pkg-config
+  CHAMPLAIN_CFLAGS
+              C compiler flags for CHAMPLAIN, overriding pkg-config
+  CHAMPLAIN_LIBS
+              linker flags for CHAMPLAIN, overriding pkg-config
+
+Use these variables to override the choices made by `configure' or to help
+it to find libraries and programs with nonstandard names/locations.
+
+Report bugs to the package provider.
