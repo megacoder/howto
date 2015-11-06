@@ -1,0 +1,22 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvim
+else
+	configure -m 'mlterm'						\
+		--with-scrollbars=sample,extra,pixmap_engine		\
+		--with-imagelib						\
+		--disable-kbd						\
+		--enable-ibus						\
+		--enable-utmp						\
+		--with-tools						\
+		--with-gnu-ld						\
+		--enable-ssh2						\
+		--with-libltdl						\
+		--disable-nls						\
+		--enable-silent-rules					\
+		--with-gtk						\
+		--enable-maintainer-mode				\
+	"$@"
+fi
+exit 0
