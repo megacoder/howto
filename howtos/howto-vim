@@ -13,7 +13,12 @@ configure vim								\
 	--enable-cscope							\
 	--enable-sniff							\
 	--enable-fontset						\
-	--enable-gui=gtk2						\
+	--enable-gui							\
+	--enable-gtk2-check						\
+	--enable-neXtaw-check						\
+	--enable-athena-check						\
+	--enable-motif-check						\
+	--enable-gnome-check						\
 	--disable-netbeans						\
 	CFLAGS='-pipe -g -O9 -D_FORTIFY_SOURCE=1'			\
 	"$@"
