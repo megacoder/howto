@@ -1,0 +1,14 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvim
+else
+	./.prebuild
+	configure -m "urxvt"						\
+		--enable-everything					\
+		--enable-languages					\
+		--enable-half-shadow					\
+		--enable-256-color					\
+		--enable-smart-resize					\
+		"$@"
+fi
