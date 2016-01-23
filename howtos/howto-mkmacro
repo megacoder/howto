@@ -1,8 +1,9 @@
 #!/bin/zsh
 # vim: ts=8 sw=8 noet
-if [[ -f configure ]]; then
-autoreconf -fvim
+
+if [[ -x configure ]] && [[ -x config.status ]]; then
+	autoreconf -fvim
 else
-configure -m "mkmacro"				\
-"$@"
+	configure -m "mkmacro"				\
+	"$@"
 fi
