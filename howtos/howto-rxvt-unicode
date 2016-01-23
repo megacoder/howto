@@ -1,5 +1,6 @@
 #!/bin/zsh
 # vim: ts=8 sw=8 noet
+rm -f configure
 configure -m "rxvt-unicode"				\
 	--enable-everything				\
 	--disable-perl					\

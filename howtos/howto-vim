@@ -10,23 +10,23 @@ configure vim								\
 	--enable-tclinterp						\
 	--enable-rubyinterp=yes						\
 	--enable-luainterp=yes						\
-	--enable-cscope							\
 	--enable-sniff							\
 	--enable-fontset						\
-	--enable-gui							\
-	--enable-gtk2-check						\
-	--enable-neXtaw-check						\
-	--enable-athena-check						\
-	--enable-motif-check						\
-	--enable-gnome-check						\
 	--disable-netbeans						\
+	--enable-gui							\
 	CFLAGS='-pipe -g -O9 -D_FORTIFY_SOURCE=1'			\
 	"$@"
-make -j20
+make -j10
 exit
+	--enable-cscope							\
 	--disable-nextaw-check						\
 	--enable-perlinterp=dynamic					\
 	--enable-gui=nextaw						\
-	--enable-gui=gtk2						\
+	--enable-neXtaw-check						\
+	--enable-motif-check						\
 	--enable-gui=athena						\
-	--enable-gui=auto						\
+	--enable-athena-check						\
+	--enable-gui=gtk2						\
+	--enable-gtk2-check						\
+	--enable-gnome-check						\
+	--enable-gui=gnome						\
