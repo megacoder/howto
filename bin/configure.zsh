@@ -29,14 +29,18 @@ fi
 
 (
 	echo "Running configure with basic arguments"
-	export	CC="gcc -std=gnu99 -march=native"
-	export	CFLAGS="${CFLAGS} -pipe -Os -D_FORTIFY_SOURCE=2"
-	export	CXX="g++ -march=native"
-	export	CXXFLAGS="${CXXFLAGS} -pipe -Os"
-	if [[ ! -z "${distrib}" ]]; then
-		export	CCACHE_PREFIX=distcc
-	else
+	CFLAGS+=" -std=gnu99 -march=native -pipe -Os -D_FORTIFY_SOURCE=2"
+	CXXFLAGS+=" -march=native -pipe -Os"
+	export CFLAGS
+	export CXXFLAGS
+	if [[ -z "${distrib}" ]]; then
 		unset	CCACHE_PREFIX
+		CC="gcc -std=gnu99 -march=native"
+		CXX="g++"
+	else
+		export	CCACHE_PREFIX='pump distcc'
+		export	CC="gcc"
+		export	CXX="g++"
 	fi
 	#
 	if [[ ! -x ./configure ]]; then
