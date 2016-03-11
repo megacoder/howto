@@ -33,5 +33,5 @@ export	CXXFLAGS="${CXXFLAGS} -pipe -Os"
 	--enable-silent-rules						\
 	$@
 if [[ -f Makefile ]]; then
-	make
+	pump make -j20
 fi

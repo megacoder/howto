@@ -13,8 +13,8 @@ configure vim								\
 	--enable-sniff							\
 	--enable-fontset						\
 	--disable-netbeans						\
-	--enable-gui							\
-	CFLAGS='-pipe -g -O9 -D_FORTIFY_SOURCE=1'			\
+	--enable-gui=auto						\
+	CFLAGS='-pipe -g -Os -D_FORTIFY_SOURCE=1'			\
 	"$@"
 make -j10
 exit

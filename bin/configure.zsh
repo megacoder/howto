@@ -4,18 +4,20 @@ ME=${0:t}
 USAGE="usage: ${ME} [-c custom] [-d] [-j #] [-m] [-n name] [-v] [options]"
 
 distcc="yes"
+pump="yes"
 VERBOSE=""
 want_make=
 jobs=$(rpm -E '%_smp_mflags')
 NAME=${PWD:t:r}
 
 distrib=yes
-while getopts dj:mn:v c; do
+while getopts dj:mn:pv c; do
 	case "${c}" in
 	d )	distrib=;;
 	j )	jobs="-j${OPTARG}";;
 	m )	want_make=yes;;
 	n )	NAME="${OPTARG}";;
+	p )	pump="";;
 	v )	VERBOSE="yes";;
 	* )	echo "${USAGE}" >&2; exit 1;;
 	esac
@@ -29,19 +31,13 @@ fi
 
 (
 	echo "Running configure with basic arguments"
-	CFLAGS+=" -std=gnu99 -march=native -pipe -Os -D_FORTIFY_SOURCE=2"
-	CXXFLAGS+=" -march=native -pipe -Os"
 	export CFLAGS
+	CFLAGS+=" -std=gnu99 -march=native -pipe -Os -D_FORTIFY_SOURCE=2"
 	export CXXFLAGS
-	if [[ -z "${distrib}" ]]; then
-		unset	CCACHE_PREFIX
-		CC="gcc -std=gnu99 -march=native"
-		CXX="g++"
-	else
-		export	CCACHE_PREFIX='pump distcc'
-		export	CC="gcc"
-		export	CXX="g++"
-	fi
+	CXXFLAGS+=" -march=native -pipe -Os"
+	unset	CCACHE_PREFIX
+	export	CC=/bin/gcc
+	export	CXX=/bin/g++
 	#
 	if [[ ! -x ./configure ]]; then
 		if [ "${VERBOSE}" ]; then
@@ -57,5 +53,5 @@ fi
 		--prefix=/opt/${NAME}					\
 		$@
 
-	[[ ! -z "${want_make}" ]] && make ${JOBS}
+	[[ ! -z "${want_make}" ]] && pump make ${JOBS}
 ) 2>&1 | tee "${NAME}-action.log"
