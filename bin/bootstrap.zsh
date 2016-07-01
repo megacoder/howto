@@ -33,5 +33,5 @@ export	CXXFLAGS="${CXXFLAGS} -pipe -Os"
 	--enable-silent-rules						\
 	$@
 if [[ -f Makefile ]]; then
-	pump make -j20
+	[[ -x /bin/pump ]] && pump make -j20 || make -j20
 fi

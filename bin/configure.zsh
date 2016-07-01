@@ -52,6 +52,8 @@ fi
 	./configure							\
 		--prefix=/opt/${NAME}					\
 		$@
-
-	[[ ! -z "${want_make}" ]] && pump make ${JOBS}
+	#
+	if [[ ! -z "${want_make}" ]]; then
+		[[ -x /bin/pump ]] && pump make -j${JOBS} || make -j${JOBS}
+	fi
 ) 2>&1 | tee "${NAME}-action.log"
