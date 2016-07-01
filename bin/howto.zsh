@@ -25,24 +25,30 @@ setup()	{
 # vim: ts=8 sw=8 noet
 if [[ -f configure ]]; then
 	autoreconf -fvi
+	[[ -x /bin/pump ]] && pump make -j10 || make -j10
 else
-	configure '<PROD>'						\
+	configure -m '<PROD>'						\
 	"$@"
 fi
-[ -x /bin/pump ] && pump make -j10 || make -j10
 EOF
 	chmod 0755 "${HOWTO}"
+}
+
+destroy()	{
+	[[ "${ACTIONS}" =~ 'n' ]] && echo rm -f "${HOWTO}" || rm -f "${HOWTO}"
 }
 
 RETVAL=0
 
 ACTIONS=''
-while getopts elnr c; do
+while getopts elnrvx c; do
 	case "${c}" in
 	e )	ACTIONS+='e';;
 	l )	ACTIONS+='l';;
 	n )	ACTIONS+='n';;
 	r )	ACTIONS+='r';;
+	v )	ACTIONS+='v';;
+	x )	ACTIONS+='x';;
 	* )	echo "${USAGE}" >&2; exit 1;;
 	esac
 done
@@ -62,6 +68,31 @@ if [[ ! -f "${HOWTO}" ]]; then
 fi
 
 # Take the ACTIONS, in a logical order
+
+if [[ "${ACTIONS}" =~ 'v' ]]; then
+	show()	{
+		local	v
+		for v in "${@}"; do
+			printf '%15s="%s"\n' ${v} "$(eval echo \$${v})"
+		done
+	}
+
+	show ACTIONS
+	show BINDIR
+	show HOWTO
+	show ME
+	show PATH
+	show PREFIX
+	show PROD
+	show RULEDIR
+	show USAGE
+
+	exit 0
+fi
+
+if [[ "${ACTIONS}" =~ 'x' ]]; then
+	[[ "${ACTIONS}" =~ 'n' ]] && echo setup || setup
+fi
 
 if [[ "${ACTIONS}" =~ 'c' ]]; then
 	[[ "${ACTIONS}" =~ 'n' ]] && echo setup || setup
