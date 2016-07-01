@@ -3,7 +3,7 @@
 if [[ -f configure ]]; then
 	autoreconf -fvim
 else
-	configure -m 'mlterm'						\
+	pump configure -m 'mlterm'					\
 		--with-scrollbars=sample,extra,pixmap_engine		\
 		--with-imagelib						\
 		--disable-kbd						\

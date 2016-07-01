@@ -1,7 +1,7 @@
 #!/bin/zsh
-[ -d src ] && cd src
-[ -d autom4cache ] && rm -rf autom4cache
-[ -d auto ] && rm -rf auto/config.cache
+[[ -d src ]] && cd src
+[[ -d autom4cache ]] && rm -rf autom4cache
+[[ -d auto ]] && rm -rf auto/config.cache
 mkdir -p auto
 rm -f configure
 configure vim								\
@@ -16,7 +16,7 @@ configure vim								\
 	--enable-gui=auto						\
 	CFLAGS='-pipe -g -Os -D_FORTIFY_SOURCE=1'			\
 	"$@"
-make -j10
+pump make -j10
 exit
 	--enable-cscope							\
 	--disable-nextaw-check						\

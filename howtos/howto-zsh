@@ -9,4 +9,4 @@ configure -d zsh							\
 	--enable-cap							\
 	--enable-zsh-mem						\
 	"$@"
-make -j20
+pump make -j20

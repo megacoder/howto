@@ -24,11 +24,12 @@ setup()	{
 #!/bin/zsh
 # vim: ts=8 sw=8 noet
 if [[ -f configure ]]; then
-	autoreconf -fvim
+	autoreconf -fvi
 else
-	configure -m '<PROD>'						\
+	configure '<PROD>'						\
 	"$@"
 fi
+[ -x /bin/pump ] && pump make -j10 || make -j10
 EOF
 	chmod 0755 "${HOWTO}"
 }
