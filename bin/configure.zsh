@@ -3,8 +3,7 @@
 ME=${0:t}
 USAGE="usage: ${ME} [-c custom] [-d] [-j #] [-m] [-n name] [-v] [options]"
 
-distcc="yes"
-pump="yes"
+PUMP=/bin/pump
 VERBOSE=""
 want_make=
 jobs=$(rpm -E '%_smp_mflags')
@@ -17,7 +16,7 @@ while getopts dj:mn:pv c; do
 	j )	jobs="-j${OPTARG}";;
 	m )	want_make=yes;;
 	n )	NAME="${OPTARG}";;
-	p )	pump="";;
+	p )	PUMP=;;
 	v )	VERBOSE="yes";;
 	* )	echo "${USAGE}" >&2; exit 1;;
 	esac
@@ -54,6 +53,6 @@ fi
 		$@
 	#
 	if [[ ! -z "${want_make}" ]]; then
-		[[ -x /bin/pump ]] && pump make -j${JOBS} || make -j${JOBS}
+		eval ${PUMP} make -j${JOBS}
 	fi
 ) 2>&1 | tee "${NAME}-action.log"

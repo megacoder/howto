@@ -1,4 +1,12 @@
 #!/bin/zsh
 # vim: ts=8 sw=8 noet
+export	CC='gcc -std=gnu99 -mtune=native'
+export	CFLAGS='-O2'
+rm -f configure
+rm -f *.spec
 configure -m "talkfilters"				\
+	--prefix=/usr					\
+	--disable-nls					\
+	--libdir=${HOME}/.configure/hexxchat/addons	\
 	"$@"
+pump make dist

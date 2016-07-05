@@ -4,7 +4,7 @@
 [[ -d auto ]] && rm -rf auto/config.cache
 mkdir -p auto
 rm -f configure
-configure vim								\
+configure -m vim							\
 	--with-features=huge						\
 	--enable-pythoninterp=yes					\
 	--enable-tclinterp						\
@@ -16,7 +16,6 @@ configure vim								\
 	--enable-gui=auto						\
 	CFLAGS='-pipe -g -Os -D_FORTIFY_SOURCE=1'			\
 	"$@"
-pump make -j10
 exit
 	--enable-cscope							\
 	--disable-nextaw-check						\

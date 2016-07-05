@@ -4,9 +4,8 @@
 rm -f configure
 ./Util/preconfig
 
-configure -d zsh							\
+configure -m -d zsh							\
 	--enable-maildir-support					\
 	--enable-cap							\
 	--enable-zsh-mem						\
 	"$@"
-pump make -j20
