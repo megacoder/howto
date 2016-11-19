@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ME=${0:t}
-USAGE="usage: ${ME} [-c custom] [-d] [-j #] [-m] [-n name] [-v] [options]"
+USAGE="usage: ${ME} [-c custom] [-d] [-f] [-j #] [-m] [-n name] [-v] [options]"
 
 PUMP=/bin/pump
 VERBOSE=""
@@ -10,9 +10,11 @@ jobs=$(rpm -E '%_smp_mflags')
 NAME=${PWD:t:r}
 
 distrib=yes
-while getopts dj:mn:pv c; do
+force=no
+while getopts dfj:mn:pv c; do
 	case "${c}" in
 	d )	distrib=;;
+	f )	force="yes";;
 	j )	jobs="-j${OPTARG}";;
 	m )	want_make=yes;;
 	n )	NAME="${OPTARG}";;
@@ -37,6 +39,10 @@ fi
 	unset	CCACHE_PREFIX
 	export	CC=/bin/gcc
 	export	CXX=/bin/g++
+	#
+	if [[ "${force}" = "yes" ]]; then
+		rm -f configure
+	fi
 	#
 	if [[ ! -x ./configure ]]; then
 		if [ "${VERBOSE}" ]; then
