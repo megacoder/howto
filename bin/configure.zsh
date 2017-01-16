@@ -50,7 +50,6 @@ fi
 	#
 	./configure							\
 		--prefix=/opt/${NAME}					\
-		--enable-silent-rules					\
 		$@
 	#
 	if [[ ! -z "${want_make}" ]]; then
