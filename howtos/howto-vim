@@ -26,19 +26,18 @@ configure -m vim							\
 	--enable-fontset						\
 	--disable-netbeans						\
 	--enable-gui=auto						\
+	--enable-cscope							\
 	CFLAGS='-pipe -g -Os -D_FORTIFY_SOURCE=1'			\
 	"$@"
 exit
-	--enable-cscope							\
 	--disable-nextaw-check						\
-	--enable-perlinterp=dynamic					\
-	--enable-gui=nextaw						\
-	--enable-neXtaw-check						\
-	--enable-motif-check						\
-	--enable-gui=athena						\
 	--enable-athena-check						\
-	--enable-gui=gtk2						\
-	--enable-gtk2-check						\
 	--enable-gnome-check						\
+	--enable-gtk2-check						\
+	--enable-gui=athena						\
 	--enable-gui=gnome						\
-	--with-tlib=ncurses						\
+	--enable-gui=gtk2						\
+	--enable-gui=nextaw						\
+	--enable-motif-check						\
+	--enable-neXtaw-check						\
+	--enable-perlinterp=dynamic					\

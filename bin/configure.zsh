@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ME=${0:t}
-USAGE="usage: ${ME} [-c custom] [-d] [-j #] [-m] [-n name] [-v] [options]"
+USAGE="usage: ${ME} [-c custom] [-d] [-f] [-j #] [-m] [-n name] [-v] [options]"
 
 VERBOSE=""
 want_make=
@@ -9,9 +9,11 @@ jobs=$(rpm -E '%_smp_mflags')
 NAME=${PWD:t:r}
 
 distrib=yes
-while getopts dj:mn:v c; do
+force=no
+while getopts dfj:mn:v c; do
 	case "${c}" in
 	d )	distrib=;;
+	f )	force="yes";;
 	j )	jobs="-j${OPTARG}";;
 	m )	want_make=yes;;
 	n )	NAME="${OPTARG}";;
@@ -42,7 +44,9 @@ fi
 	export	CC=/bin/gcc
 	export	CXX=/bin/g++
 	#
-	# If no local "configure" script exists, make a default one
+	if [[ "${force}" = "yes" ]]; then
+		rm -f configure
+	fi
 	#
 	if [[ ! -x ./configure ]]; then
 		if [ "${VERBOSE}" ]; then
