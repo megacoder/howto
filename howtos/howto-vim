@@ -1,9 +1,21 @@
 #!/bin/zsh
-[[ -d src ]] && cd src
-[[ -d autom4cache ]] && rm -rf autom4cache
-[[ -d auto ]] && rm -rf auto/config.cache
-mkdir -p auto
-rm -f configure
+
+if [[ -x /bin/pump ]]; then
+	TRAPEXIT()	{
+		if [[ -x /bin/pump ]]; then
+			pump --shutdown
+		fi
+	}
+	eval $(pump --startup)
+fi
+
+make -j12
+
+exit 0
+
+#
+cd src
+rm -rf configure auto/configure
 configure -m vim							\
 	--with-features=huge						\
 	--enable-pythoninterp=yes					\
@@ -29,3 +41,4 @@ exit
 	--enable-gtk2-check						\
 	--enable-gnome-check						\
 	--enable-gui=gnome						\
+	--with-tlib=ncurses						\
