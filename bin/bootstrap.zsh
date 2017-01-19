@@ -11,8 +11,9 @@ if [[ ! -d "${VPATH}" ]]; then
 	exit 1
 fi
 echo "Cleaning up any prior configuration."
-find . -name config.cache -print | xargs rm -f
-find . -name autom4te.cache -print | xargs rm -rf
+for name in config.cache autom4te.cache; do
+	find . -name "${name}" -exec rm -rf {} + -print
+done
 tool="autoreconf -fvim ${VPATH}"
 for trial in bootstrap{,.{zsh,sh}}; do
 	if [[ -x "${VPATH}/${trial}" ]]; then
@@ -31,7 +32,7 @@ export	CXX="g++ -march=native"
 export	CXXFLAGS="${CXXFLAGS} -pipe -Os"
 ./configure								\
 	--enable-silent-rules						\
-	$@
+	"$@"
 if [[ -f Makefile ]]; then
 	[[ -x /bin/pump ]] && pump make -j20 || make -j20
 fi
