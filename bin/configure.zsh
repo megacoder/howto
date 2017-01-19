@@ -3,20 +3,18 @@
 ME=${0:t}
 USAGE="usage: ${ME} [-c custom] [-d] [-j #] [-m] [-n name] [-v] [options]"
 
-PUMP=/bin/pump
 VERBOSE=""
 want_make=
 jobs=$(rpm -E '%_smp_mflags')
 NAME=${PWD:t:r}
 
 distrib=yes
-while getopts dj:mn:pv c; do
+while getopts dj:mn:v c; do
 	case "${c}" in
 	d )	distrib=;;
 	j )	jobs="-j${OPTARG}";;
 	m )	want_make=yes;;
 	n )	NAME="${OPTARG}";;
-	p )	PUMP=;;
 	v )	VERBOSE="yes";;
 	* )	echo "${USAGE}" >&2; exit 1;;
 	esac
@@ -29,6 +27,12 @@ if [[ $# -ge 1 ]]; then
 fi
 
 (
+	if [[ /bin/pump ]]; then
+		eval $(/bin/pump --startup)
+		ZSHEXIT()	{
+			/bin/pump --shutdown
+		}
+	fi
 	echo "Running configure with basic arguments"
 	export CFLAGS
 	CFLAGS+=" -std=gnu99 -march=native -pipe -Os -D_FORTIFY_SOURCE=2"
@@ -37,6 +41,8 @@ fi
 	unset	CCACHE_PREFIX
 	export	CC=/bin/gcc
 	export	CXX=/bin/g++
+	#
+	# If no local "configure" script exists, make a default one
 	#
 	if [[ ! -x ./configure ]]; then
 		if [ "${VERBOSE}" ]; then
@@ -48,11 +54,15 @@ fi
 		fi
 	fi
 	#
+	# Make a default configuration, for now.
+	#
 	./configure							\
 		--prefix=/opt/${NAME}					\
-		$@
+		"$@"
+	#
+	# Build the item if asked
 	#
 	if [[ ! -z "${want_make}" ]]; then
-		eval ${PUMP} make -j${JOBS}
+		make -j${JOBS}
 	fi
 ) 2>&1 | tee "${NAME}-action.log"
