@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 ME=${0:t}
-USAGE="usage: ${ME} [-c custom] [-d] [-f] [-j #] [-m] [-n name] [-v] [options]"
+USAGE="usage: ${ME} [-d] [-f] [-j #] [-m] [-n name] [-v] [options]"
 
 VERBOSE=""
 want_make=
@@ -10,18 +10,19 @@ NAME=${PWD:t:r}
 
 distrib=yes
 force=no
-while getopts dfj:mn:v c; do
-	case "${c}" in
-	d )	distrib=;;
-	f )	force="yes";;
-	j )	jobs="-j${OPTARG}";;
-	m )	want_make=yes;;
-	n )	NAME="${OPTARG}";;
-	v )	VERBOSE="yes";;
+while [[ $# -gt 0 ]] && [[ "${1}" =~ '^-.*$' ]]; do
+	case "${1}" in
+	-d )	distrib= ;;
+	-f )	force='yes';;
+	-j )	jobs="-j${2}"; shift;;
+	-m )	want_make='yes';;
+	-n )	NAME="${2}"; shift;;
+	-v )	VERBOSE='yes';;
+	-- )	shift; break;;
 	* )	echo "${USAGE}" >&2; exit 1;;
 	esac
+	shift
 done
-shift $((OPTIND - 1))
 
 if [[ $# -ge 1 ]]; then
 	NAME="${1}"

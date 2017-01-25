@@ -1,5 +1,5 @@
 #!/bin/zsh
-ME="${0:t}"
+ME="${0:t:r}"
 USAGE="usage: ${ME} [name..]"
 
 PROD="${PWD:a:t:r}"

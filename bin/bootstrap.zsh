@@ -1,6 +1,6 @@
 #!/bin/zsh
 [[ "${BOOTSTRAP_VERBOSE}" = "" ]] || set -x
-ME=${0:t}
+ME=${0:t:r}
 
 VPATH=.
 if [[ ! -z "$1" ]]; then
