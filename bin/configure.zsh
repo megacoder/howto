@@ -42,8 +42,8 @@ fi
 	export CXXFLAGS
 	CXXFLAGS+=" -march=native -pipe -Os"
 	unset	CCACHE_PREFIX
-	export	CC=/bin/gcc
-	export	CXX=/bin/g++
+	export	CC=gcc
+	export	CXX=g++
 	#
 	if [[ "${force}" = "yes" ]]; then
 		rm -f configure

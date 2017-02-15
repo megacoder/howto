@@ -9,16 +9,18 @@ if [[ -x /bin/pump ]]; then
 	eval $(pump --startup)
 fi
 
-make -j12
+# FIXME	make -j12
 
-exit 0
+# FIXME	exit 0
 
 #
-cd src
-rm -rf configure auto/configure
+[[ -d src ]] && cd src || true
+rm -rf configure
 configure -m vim							\
 	--with-features=huge						\
+	--with-tlib='curses tlib'					\
 	--enable-pythoninterp=yes					\
+	--enable-python3interp=yes					\
 	--enable-tclinterp						\
 	--enable-rubyinterp=yes						\
 	--enable-luainterp=yes						\

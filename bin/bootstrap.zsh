@@ -30,6 +30,12 @@ export	CC="gcc -std=gnu99 -march=native"
 export	CFLAGS="${CFLAGS} -pipe -Os"
 export	CXX="g++ -march=native"
 export	CXXFLAGS="${CXXFLAGS} -pipe -Os"
+if [[ /bin/pump ]]; then
+	eval $(/bin/pump --startup)
+	ZSHEXT()	{
+		/bin/pump --shutdown
+	}
+fi
 ./configure								\
 	--enable-silent-rules						\
 	"$@"
