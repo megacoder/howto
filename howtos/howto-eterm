@@ -1,5 +1,5 @@
 #!/bin/zsh
-configure eterm								\
+configure -m eterm							\
 	--enable-trans							\
 	--enable-mmx							\
 	--enable-sse2							\
