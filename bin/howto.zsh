@@ -4,7 +4,7 @@ USAGE="usage: ${ME} [name..]"
 
 PROD="${PWD:a:t:r}"
 
-PREFIX='/home/reynolds/src/h/howto.git'
+PREFIX='/home/reynolds/src/h/howto'
 BINDIR="${PREFIX}/bin"
 RULEDIR="${PREFIX}/howtos"
 HOWTO="${RULEDIR}/howto-${PROD}"
