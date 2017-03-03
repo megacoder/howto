@@ -24,7 +24,7 @@ while [[ $# -gt 0 ]] && [[ "${1}" =~ '^-.*$' ]]; do
 	shift
 done
 
-if [[ -z "${NAME}" -a $# -ge 1 ]]; then
+if [[ -z "${NAME}" ]] && [[  $# -ge 1 ]]; then
 	NAME="${1}"
 	shift
 fi
