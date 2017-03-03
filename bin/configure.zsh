@@ -5,21 +5,21 @@ USAGE="usage: ${ME} [-d] [-f] [-j #] [-m] [-n name] [-v] [options]"
 
 VERBOSE=""
 want_make=
-jobs=$(rpm -E '%_smp_mflags')
+JOBS=$(rpm -E '%_smp_mflags')
 NAME=${PWD:t:r}
 
 distrib=yes
 force=no
 while [[ $# -gt 0 ]] && [[ "${1}" =~ '^-.*$' ]]; do
 	case "${1}" in
-	-d )	distrib= ;;
-	-f )	force='yes';;
-	-j )	jobs="-j${2}"; shift;;
-	-m )	want_make='yes';;
-	-n )	NAME="${2}"; shift;;
-	-v )	VERBOSE='yes';;
-	-- )	shift; break;;
-	* )	echo "${USAGE}" >&2; exit 1;;
+	-d )	distrib=			;;
+	-f )	force='yes'			;;
+	-j )	JOBS="-j${2}"; shift		;;
+	-m )	want_make='yes'			;;
+	-n )	NAME="${2}"; shift		;;
+	-v )	VERBOSE='yes'			;;
+	-- )	shift; break			;;
+	*  )	echo "${USAGE}" >&2; exit 1	;;
 	esac
 	shift
 done
