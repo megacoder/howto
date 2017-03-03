@@ -5,6 +5,12 @@ USAGE="usage: ${ME} [name..]"
 PROD="${PWD:a:t:r}"
 
 PREFIX='/home/reynolds/src/h/howto'
+for where in ${HOME}/src/h/howto ${HOME}/src/h/howto.git; do
+	if [[ -d "${where}" ]]; then
+		PREFIX="${where}"
+		break
+	fi
+done
 BINDIR="${PREFIX}/bin"
 RULEDIR="${PREFIX}/howtos"
 HOWTO="${RULEDIR}/howto-${PROD}"
