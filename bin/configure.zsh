@@ -24,7 +24,7 @@ while [[ $# -gt 0 ]] && [[ "${1}" =~ '^-.*$' ]]; do
 	shift
 done
 
-if [[ $# -ge 1 ]]; then
+if [[ -z "${NAME}" -a $# -ge 1 ]]; then
 	NAME="${1}"
 	shift
 fi
@@ -50,13 +50,7 @@ fi
 	fi
 	#
 	if [[ ! -x ./configure ]]; then
-		if [ "${VERBOSE}" ]; then
-			export BOOTSTRAP_VERBOSE=yes
-			bootstrap
-		else
-			unset BOOTSTRAP_VERBOSE
-			bootstrap
-		fi
+		bootstrap
 	fi
 	#
 	# Make a default configuration, for now.

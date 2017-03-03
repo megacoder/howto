@@ -16,6 +16,7 @@ fi
 #
 [[ -d src ]] && cd src || true
 rm -rf configure
+set -v
 configure -m vim							\
 	--with-features=huge						\
 	--with-tlib='curses tlib'					\
