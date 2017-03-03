@@ -62,6 +62,6 @@ fi
 	# Build the item if asked
 	#
 	if [[ ! -z "${want_make}" ]]; then
-		make -j${JOBS}
+		make ${JOBS}
 	fi
 ) 2>&1 | tee "${NAME}-action.log"
