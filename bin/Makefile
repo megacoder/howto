@@ -14,7 +14,7 @@ INSTALL	=install
 
 .PHONY: ${TARGETS} ${SUBDIRS}
 
-SCRIPTS	:=$(wildcard *.zsh) howto.zsh
+SCRIPTS	:=$(wildcard *.zsh) howto.zsh $(wildcard *.py)
 
 all::	${SCRIPTS}
 
