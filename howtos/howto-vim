@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# This script gets run in the top-level directory and invokes
+# my "configure" script there; the "-C src" switch makes the
+# script run in the "src" subdirector.
+
 if [[ -x /bin/pump ]]; then
 	TRAPEXIT()	{
 		if [[ -x /bin/pump ]]; then
@@ -9,30 +13,27 @@ if [[ -x /bin/pump ]]; then
 	eval $(pump --startup)
 fi
 
-# FIXME	make -j12
-
-# FIXME	exit 0
-
 #
-[[ -d src ]] && cd src || true
-rm -rf configure
-set -v
-configure -m vim							\
+
+configure -C src -f -m -n vim						\
+	--								\
 	--with-features=huge						\
-	--with-tlib='curses tlib'					\
+	--with-tlib=ncurses						\
+	--enable-gui=gtk3						\
 	--enable-pythoninterp=yes					\
 	--enable-python3interp=yes					\
 	--enable-tclinterp						\
-	--enable-rubyinterp=yes						\
-	--enable-luainterp=yes						\
-	--enable-sniff							\
 	--enable-fontset						\
 	--disable-netbeans						\
-	--enable-gui=auto						\
 	--enable-cscope							\
-	CFLAGS='-pipe -g -Os -D_FORTIFY_SOURCE=1'			\
-	"$@"
-exit
+	--enable-luainterp=yes						\
+	"$@"								\
+	2>&1							|
+tee howto.log
+exit $?
+# QUARRANTEENED
+	--enable-perlinterp=dynamic					\
+# UNUSED
 	--disable-nextaw-check						\
 	--enable-athena-check						\
 	--enable-gnome-check						\
@@ -43,4 +44,5 @@ exit
 	--enable-gui=nextaw						\
 	--enable-motif-check						\
 	--enable-neXtaw-check						\
-	--enable-perlinterp=dynamic					\
+	--enable-rubyinterp=yes						\
+	--enable-sniff							\
