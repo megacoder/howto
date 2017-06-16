@@ -12,7 +12,9 @@ if [[ -x /bin/pump ]]; then
 	}
 fi
 
-configure -m -d zsh							\
+# configure -m -d zsh							\
+configure -m								\
+	--								\
 	--enable-maildir-support					\
 	--enable-cap							\
 	--enable-zsh-mem						\

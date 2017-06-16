@@ -177,7 +177,7 @@ if __name__ == '__main__':
 			conf.aclocal()
 			conf.autoconf()
 		if os.path.isfile( 'Makefile.am' ):
-			conf.aut0make()
+			conf.automake()
 			if not os.path.isfile( 'Makefile' ):
 				print >>sys.stderr, 'Did not produce a "Makefile" file.'
 	# Should have a 'configure' file by noe
