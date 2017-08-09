@@ -1,0 +1,12 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+rm -f configure
+./bootstrap
+configure -m 'pdsh'							\
+	--enable-silent-rules						\
+	--enable-maintainer-mode					\
+	--with-fanout=6							\
+	--with-ssh							\
+	--with-machines=/opt/pdsh/etc/machines				\
+	--with-nodeupdown						\
+	"$@"
