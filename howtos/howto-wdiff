@@ -1,0 +1,9 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvi
+	[[ -x /bin/pump ]] && pump make -j10 || make -j10
+else
+	configure -m 'wdiff'						\
+	"$@"
+fi

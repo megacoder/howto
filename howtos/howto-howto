@@ -1,0 +1,15 @@
+#!/bin/zsh
+# vim: ts=8 sw=8 noet
+if [[ -f configure ]]; then
+	autoreconf -fvi
+	if [[ -x /bin/pump ]]; then
+		eval $(/bin/pump --startup)
+		ZSHEXT()	{
+			/bin/pump --shutdown
+		}
+	fi
+	make -j10
+else
+	configure -m 'howto'						\
+	"$@"
+fi

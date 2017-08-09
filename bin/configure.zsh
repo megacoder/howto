@@ -1,57 +1,70 @@
 #!/bin/zsh
 
 ME=${0:t}
-USAGE="usage: ${ME} [-c custom] [-d] [-j #] [-m] [-n name] [-v] [options]"
+USAGE="usage: ${ME} [-C dir] [-d] [-f] [-j #] [-m] [-n name] [-v] <pass-thru-args>"
 
-distcc="yes"
-pump="yes"
 VERBOSE=""
 want_make=
-jobs=$(rpm -E '%_smp_mflags')
+JOBS=$(rpm -E '%_smp_mflags')
 NAME=${PWD:t:r}
 
 distrib=yes
-while getopts dj:mn:pv c; do
-	case "${c}" in
-	d )	distrib=;;
-	j )	jobs="-j${OPTARG}";;
-	m )	want_make=yes;;
-	n )	NAME="${OPTARG}";;
-	p )	pump="";;
-	v )	VERBOSE="yes";;
-	* )	echo "${USAGE}" >&2; exit 1;;
+force=no
+RUNDIR=
+while [[ $# -gt 0 ]] && [[ "${1}" =~ '^-.*$' ]]; do
+	case "${1}" in
+	-C  )	RUNDIR="${2}"; shift		;;
+	-d  )	distrib=			;;
+	-f  )	force='yes'			;;
+	-j  )	JOBS="-j${2}"; shift		;;
+	-m  )	want_make='yes'			;;
+	-n  )	NAME="${2}"; shift		;;
+	-v  )	VERBOSE='yes'			;;
+	--  )	shift; break			;;
+	*   )	break				;;
 	esac
-done
-shift $((OPTIND - 1))
-
-if [[ $# -ge 1 ]]; then
-	NAME="${1}"
 	shift
+done
+
+echo "${ME}: resid = $@"
+
+set -v
+[[ -z "${RUNDIR}" ]] || cd "${RUNDIR}"
+
+if [[ /bin/pump ]]; then
+	eval $(/bin/pump --startup)
+	ZSHEXIT()	{
+		/bin/pump --shutdown
+	}
 fi
-
-(
-	echo "Running configure with basic arguments"
-	export CFLAGS
-	CFLAGS+=" -std=gnu99 -march=native -pipe -Os -D_FORTIFY_SOURCE=2"
-	export CXXFLAGS
-	CXXFLAGS+=" -march=native -pipe -Os"
-	unset	CCACHE_PREFIX
-	export	CC=/bin/gcc
-	export	CXX=/bin/g++
-	#
-	if [[ ! -x ./configure ]]; then
-		if [ "${VERBOSE}" ]; then
-			export BOOTSTRAP_VERBOSE=yes
-			bootstrap
-		else
-			unset BOOTSTRAP_VERBOSE
-			bootstrap
-		fi
-	fi
-	#
-	./configure							\
-		--prefix=/opt/${NAME}					\
-		$@
-
-	[[ ! -z "${want_make}" ]] && pump make ${JOBS}
-) 2>&1 | tee "${NAME}-action.log"
+echo "Running configure with basic arguments"
+CFLAGS+=" -std=gnu99 -march=native -pipe -Os -D_FORTIFY_SOURCE=2"
+export CFLAGS
+CXXFLAGS+=" -march=native -pipe -Os"
+export CXXFLAGS
+unset	CCACHE_PREFIX
+export	CC=gcc
+export	CXX=g++
+#
+if [[ "${force}" = "yes" ]]; then
+	echo "${ME}: removing ./configure to force reconstruction."
+	rm -f configure
+fi
+#
+if [[ ! -x ./configure ]]; then
+	echo "${ME}: building basic ./configure script."
+	bootstrap
+fi
+#
+# Make a default configuration, for now.
+#
+echo "${ME}: running ./configure script."
+echo "$ ./configure --prefix=/opt/${NAME} $@"
+./configure --prefix=/opt/${NAME} "$@"
+#
+# Build the item if asked
+#
+if [[ ! -z "${want_make}" ]]; then
+	echo "${ME}: running make(1), as requested."
+	make ${JOBS}
+fi

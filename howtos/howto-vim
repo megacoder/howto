@@ -1,32 +1,48 @@
 #!/bin/zsh
-[ -d src ] && cd src
-[ -d autom4cache ] && rm -rf autom4cache
-[ -d auto ] && rm -rf auto/config.cache
-mkdir -p auto
-rm -f configure
-configure vim								\
+
+# This script gets run in the top-level directory and invokes
+# my "configure" script there; the "-C src" switch makes the
+# script run in the "src" subdirector.
+
+if [[ -x /bin/pump ]]; then
+	TRAPEXIT()	{
+		if [[ -x /bin/pump ]]; then
+			pump --shutdown
+		fi
+	}
+	eval $(pump --startup)
+fi
+
+#
+
+configure -C src -f -m -n vim						\
+	--								\
 	--with-features=huge						\
+	--with-tlib=ncurses						\
+	--enable-gui=gtk3						\
 	--enable-pythoninterp=yes					\
+	--enable-python3interp=yes					\
 	--enable-tclinterp						\
-	--enable-rubyinterp=yes						\
-	--enable-luainterp=yes						\
-	--enable-sniff							\
 	--enable-fontset						\
 	--disable-netbeans						\
-	--enable-gui=auto						\
-	CFLAGS='-pipe -g -Os -D_FORTIFY_SOURCE=1'			\
-	"$@"
-make -j10
-exit
 	--enable-cscope							\
-	--disable-nextaw-check						\
+	--enable-luainterp=yes						\
+	"$@"								\
+	2>&1							|
+tee howto.log
+exit $?
+# QUARRANTEENED
 	--enable-perlinterp=dynamic					\
-	--enable-gui=nextaw						\
-	--enable-neXtaw-check						\
-	--enable-motif-check						\
-	--enable-gui=athena						\
+# UNUSED
+	--disable-nextaw-check						\
 	--enable-athena-check						\
-	--enable-gui=gtk2						\
-	--enable-gtk2-check						\
 	--enable-gnome-check						\
+	--enable-gtk2-check						\
+	--enable-gui=athena						\
 	--enable-gui=gnome						\
+	--enable-gui=gtk2						\
+	--enable-gui=nextaw						\
+	--enable-motif-check						\
+	--enable-neXtaw-check						\
+	--enable-rubyinterp=yes						\
+	--enable-sniff							\

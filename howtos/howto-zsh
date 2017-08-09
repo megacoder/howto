@@ -2,11 +2,20 @@
 # vim: sw=8 ts=8 noet
 
 rm -f configure
+
 ./Util/preconfig
 
-configure -d zsh							\
+if [[ -x /bin/pump ]]; then
+	eval $( /bin/pump --startup )
+	ZSHEXIT()	{
+		/bin/pump --shutdown
+	}
+fi
+
+# configure -m -d zsh							\
+configure -m								\
+	--								\
 	--enable-maildir-support					\
 	--enable-cap							\
 	--enable-zsh-mem						\
 	"$@"
-make -j20

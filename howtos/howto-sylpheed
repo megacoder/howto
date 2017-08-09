@@ -5,6 +5,7 @@ rm -rf configure autom4te.cache
 	--enable-threads						\
 	--enable-oniguruma						\
 	--disable-ipv6							\
+	--enable-silent-rules						\
 	"$@"
 make -j10
 exit 0
