@@ -20,6 +20,7 @@ configure -C src -f -m -n vim						\
 	--with-features=huge						\
 	--with-tlib=ncurses						\
 	--enable-gui=gtk3						\
+	--enable-gtk2-check						\
 	--enable-pythoninterp=yes					\
 	--enable-python3interp=yes					\
 	--enable-tclinterp						\
@@ -27,17 +28,8 @@ configure -C src -f -m -n vim						\
 	--disable-netbeans						\
 	--enable-cscope							\
 	--enable-luainterp=yes						\
-	"$@"								\
-	2>&1							|
-tee howto.log
-exit $?
-# QUARRANTEENED
-	--enable-perlinterp=dynamic					\
-# UNUSED
-	--disable-nextaw-check						\
 	--enable-athena-check						\
 	--enable-gnome-check						\
-	--enable-gtk2-check						\
 	--enable-gui=athena						\
 	--enable-gui=gnome						\
 	--enable-gui=gtk2						\
@@ -46,3 +38,11 @@ exit $?
 	--enable-neXtaw-check						\
 	--enable-rubyinterp=yes						\
 	--enable-sniff							\
+	"$@"								\
+	2>&1							|
+tee howto.log
+exit $?
+# QUARRANTEENED
+	--enable-perlinterp=dynamic					\
+# UNUSED
+	--disable-nextaw-check						\
