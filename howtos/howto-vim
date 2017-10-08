@@ -5,12 +5,10 @@
 # script run in the "src" subdirector.
 
 if [[ -x /bin/pump ]]; then
-	TRAPEXIT()	{
-		if [[ -x /bin/pump ]]; then
-			pump --shutdown
-		fi
+	eval $(/bin/pump --startup)
+	ZSHEXIT()	{
+		/bin/pump --shutdown
 	}
-	eval $(pump --startup)
 fi
 
 #
@@ -18,31 +16,30 @@ fi
 configure -C src -f -m -n vim						\
 	--								\
 	--with-features=huge						\
-	--with-tlib=ncurses						\
-	--enable-gui=gtk3						\
-	--enable-gtk2-check						\
-	--enable-pythoninterp=yes					\
-	--enable-python3interp=yes					\
-	--enable-tclinterp						\
-	--enable-fontset						\
+									\
 	--disable-netbeans						\
 	--enable-cscope							\
-	--enable-luainterp=yes						\
-	--enable-athena-check						\
+	--enable-fontset						\
 	--enable-gnome-check						\
-	--enable-gui=athena						\
-	--enable-gui=gnome						\
-	--enable-gui=gtk2						\
-	--enable-gui=nextaw						\
+	--enable-gtk2-check						\
+	--enable-gui=gtk3						\
+	--enable-luainterp=yes						\
 	--enable-motif-check						\
-	--enable-neXtaw-check						\
-	--enable-rubyinterp=yes						\
-	--enable-sniff							\
+	--enable-python3interp=yes					\
+	--enable-pythoninterp=yes					\
+	--enable-tclinterp						\
+									\
 	"$@"								\
 	2>&1							|
 tee howto.log
 exit $?
 # QUARRANTEENED
 	--enable-perlinterp=dynamic					\
+	--with-tlib=ncurses						\
 # UNUSED
 	--disable-nextaw-check						\
+	--enable-athena-check						\
+	--enable-gui=athena						\
+	--enable-gui=gnome						\
+	--enable-rubyinterp=yes						\
+	--enable-gui=gtk2						\
