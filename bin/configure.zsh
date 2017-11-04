@@ -33,7 +33,7 @@ set -v
 
 if [[ /bin/pump ]]; then
 	eval $(/bin/pump --startup)
-	ZSHEXIT()	{
+	zshexit()	{
 		/bin/pump --shutdown
 	}
 fi
