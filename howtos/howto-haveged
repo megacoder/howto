@@ -6,12 +6,14 @@ if [[ -x /bin/pump ]]; then
 	# is so-o-o cool!
 	eval $( /bin/pump --startup )
 	zshexit()       {
+		echo 'bye'
 		/bin/pump --shutdown
+		echo 'gone...'
 	}
 fi
 if [[ -f configure ]]; then
 	autoreconf -fvim
 else
-	configure -m 'tcsh'						\
+	configure -m 'haveged'						\
 	"$@"
 fi

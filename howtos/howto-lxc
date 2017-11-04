@@ -12,6 +12,6 @@ fi
 if [[ -f configure ]]; then
 	autoreconf -fvim
 else
-	configure -m 'tcsh'						\
+	configure -m 'lxc'						\
 	"$@"
 fi

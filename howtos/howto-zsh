@@ -7,7 +7,7 @@ rm -f configure
 
 if [[ -x /bin/pump ]]; then
 	eval $( /bin/pump --startup )
-	ZSHEXIT()	{
+	zshexit()	{
 		/bin/pump --shutdown
 	}
 fi

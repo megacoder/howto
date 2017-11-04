@@ -1,0 +1,10 @@
+Did not produce a "./configure" file.
+$ /opt/bin/configure -m howto
+distrib:       	False
+force:         	False
+jobs:          	5
+name:          	howto
+pass_thru:     	['howto']
+run_dir:       	None
+verbose:       	False
+want_make:     	True
