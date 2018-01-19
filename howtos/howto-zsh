@@ -17,5 +17,6 @@ configure -m								\
 	--								\
 	--enable-maildir-support					\
 	--enable-cap							\
-	--enable-zsh-mem						\
 	"$@"
+exit 0
+	--enable-zsh-mem						\
