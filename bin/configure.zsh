@@ -28,7 +28,6 @@ done
 
 echo "${ME}: resid = $@"
 
-set -v
 [[ -z "${RUNDIR}" ]] || cd "${RUNDIR}"
 
 if [[ /bin/pump ]]; then

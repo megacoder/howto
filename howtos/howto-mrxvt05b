@@ -1,6 +1,6 @@
 #!/bin/zsh
 ./bootstrap.sh
-configure -m mrxvt							\
+configure -m -n mrxvt							\
 	--enable-everything						\
 	--enable-maintainer-mode					\
 	--with-tab-radius=300						\
