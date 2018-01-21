@@ -43,9 +43,9 @@ fi
 
 [[ -z "${VERBOSE}" ]] || echo "Setting default compilation args."
 export	CC="gcc -std=gnu99 -march=native"
-export	CFLAGS="${CFLAGS} -pipe -Os"
+export	CFLAGS="${CFLAGS} -pipe -O3 -ffast-math"
 export	CXX="g++ -march=native"
-export	CXXFLAGS="${CXXFLAGS} -pipe -Os"
+export	CXXFLAGS="${CXXFLAGS} -pipe -O3 -ffast-math"
 
 [[ -z "${VERBOSE}" ]] || echo "./configure --enable-silent-rules $@"
 ./configure								\

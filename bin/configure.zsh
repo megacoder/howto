@@ -35,9 +35,9 @@ if [[ /bin/pump ]]; then
 	}
 fi
 echo "Running configure with basic arguments"
-CFLAGS+=" -std=gnu99 -march=native -pipe -Os -D_FORTIFY_SOURCE=2"
+CFLAGS+=" -std=gnu99 -march=native -pipe -O3 -ffast-math -D_FORTIFY_SOURCE=2"
 export CFLAGS
-CXXFLAGS+=" -march=native -pipe -Os"
+CXXFLAGS+=" -march=native -pipe -O3 -ffast-math"
 export CXXFLAGS
 unset	CCACHE_PREFIX
 export	CC=gcc
