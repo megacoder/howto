@@ -26,8 +26,6 @@ while [[ $# -gt 0 ]] && [[ "${1}" =~ '^-.*$' ]]; do
 	shift
 done
 
-echo "${ME}: resid = $@"
-
 [[ -z "${RUNDIR}" ]] || cd "${RUNDIR}"
 
 if [[ /bin/pump ]]; then
@@ -57,9 +55,14 @@ fi
 #
 # Make a default configuration, for now.
 #
+if [[ "$(arch)" = "x86_64" ]]; then
+	LIBDIR=lib64
+else
+	LIBDIR=lib
+fi
 echo "${ME}: running ./configure script."
-echo "$ ./configure --prefix=/opt/${NAME} $@"
-./configure --prefix=/opt/${NAME} "$@"
+echo "$ ./configure --prefix=/opt/${NAME} --libdir=/opt/${NAME}/${LIBDIR} $@"
+./configure --prefix=/opt/${NAME} --libdir=/opt/${NAME}/${LIBDIR} "$@"
 #
 # Build the item if asked
 #
