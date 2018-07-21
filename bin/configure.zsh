@@ -28,7 +28,7 @@ done
 
 [[ -z "${RUNDIR}" ]] || cd "${RUNDIR}"
 
-if [[ /bin/pump ]]; then
+if [[ -x /bin/pump ]]; then
 	eval $(/bin/pump --startup)
 	zshexit()	{
 		/bin/pump --shutdown
