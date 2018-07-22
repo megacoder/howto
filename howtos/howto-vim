@@ -18,16 +18,18 @@ configure -C src -f -m -n vim						\
 	--with-features=huge						\
 									\
 	--disable-netbeans						\
+	--enable-gui							\
 	--enable-cscope							\
 	--enable-fontset						\
 	--enable-gnome-check						\
 	--enable-gtk2-check						\
-	--enable-gui=gtk3						\
 	--enable-luainterp=yes						\
 	--enable-motif-check						\
 	--enable-python3interp=yes					\
 	--enable-pythoninterp=yes					\
+	--enable-athena-check						\
 	--enable-tclinterp						\
+	--enable-rubyinterp=yes						\
 									\
 	"$@"								\
 	2>&1							|
@@ -38,8 +40,6 @@ exit $?
 	--with-tlib=ncurses						\
 # UNUSED
 	--disable-nextaw-check						\
-	--enable-athena-check						\
 	--enable-gui=athena						\
 	--enable-gui=gnome						\
-	--enable-rubyinterp=yes						\
 	--enable-gui=gtk2						\
