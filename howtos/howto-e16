@@ -1,6 +1,6 @@
 #!/bin/zsh
 # vim: ts=8 sw=8
-configure e16								\
+configure -m e16							\
 									\
 	--with-x							\
 	--with-gnu-ld							\
@@ -14,7 +14,6 @@ configure e16								\
 	--enable-sound							\
 	--enable-sound-esound						\
 	--enable-sound-pulse						\
-	--prefix=/usr							\
 									\
 	"$@"
 make dist
