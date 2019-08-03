@@ -1,0 +1,7 @@
+# Added from https://raw.githubusercontent.com/github/gitignore/master/Global/Linux.gitignore
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+.*.swp
