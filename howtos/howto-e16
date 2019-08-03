@@ -1,10 +1,10 @@
 #!/bin/zsh
 # vim: ts=8 sw=8
-configure -m e16							\
+configure -m -n e16							\
 									\
+	--prefix=/							\
 	--with-x							\
 	--with-gnu-ld							\
-	--enable-pseudotrans						\
 	--disable-nls							\
 	--enable-composite						\
 	--enable-modules						\
@@ -12,8 +12,10 @@ configure -m e16							\
 	--enable-pango							\
 	--enable-silent-rules						\
 	--enable-sound							\
-	--enable-sound-esound						\
-	--enable-sound-pulse						\
 									\
 	"$@"
 make dist
+exit $?
+	--enable-pseudotrans						\
+	--enable-sound-esound						\
+	--enable-sound-pulse						\

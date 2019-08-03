@@ -1,6 +1,6 @@
 #!/bin/zsh
 # vi: ts=8 sw=8 noet
 rm -f configure
-configure -m "errno"							\
+configure -m -n "errno"							\
 	--enable-maintainer-mode					\
 	"$@"
