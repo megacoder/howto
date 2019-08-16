@@ -54,6 +54,12 @@ export	CXXFLAGS="${CXXFLAGS} -pipe -O3 -ffast-math"
 
 if [[ -f Makefile ]]; then
 	[[ -z "${VERBOSE}" ]] || echo "Compiling"
-	pump make -j20
+	if [[ -x /bin/pump ]]; then
+		eval $(/bin/pump --startup)
+		zshexit()	{
+			/bin/pump --shutdown
+		}
+	fi
+	make -j20
 fi
 exit 0
