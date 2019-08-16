@@ -62,11 +62,11 @@ else
 fi
 echo "${ME}: running ./configure script."
 echo "$ ./configure --prefix=/opt/${NAME} --libdir=/opt/${NAME}/${LIBDIR} $@"
-./configure --prefix=/opt/${NAME} --libdir=/opt/${NAME}/${LIBDIR} "$@"
+${DEBUG} ./configure --prefix=/opt/${NAME} --libdir=/opt/${NAME}/${LIBDIR} "$@"
 #
 # Build the item if asked
 #
 if [[ ! -z "${want_make}" ]]; then
 	echo "${ME}: running make(1), as requested."
-	make ${JOBS}
+	${DEBUG} make ${JOBS}
 fi
