@@ -14,6 +14,7 @@ shift $(( ${OPTIND} - 1 ))
 
 if [[ ! -z "$1" ]]; then
 	VPATH="${1}"
+	shift
 fi
 if [[ ! -d "${VPATH}" ]]; then
 	echo "${ME}: VPATH (${VPATH}) does not exist." >&2
@@ -26,7 +27,7 @@ find . -name config.cache -exec /bin/rm -rf {} + -print
 [[ -z "${VERBOSE}" ]] || echo 'Deleting autom4te.cache'
 find . -name autom4te.cache -exec /bin/rm -rf {} + -print
 
-tool="autoreconf -fvim ${VPATH}"
+tool="autoreconf -fvi ${VPATH}"
 for trial in bootstrap{,.{zsh,sh}}; do
 	if [[ -x "${VPATH}/${trial}" ]]; then
 		tool="${VPATH}/${trial} ${VPATH}"
@@ -39,27 +40,5 @@ eval ${tool}
 if [[ ! -x ./configure ]]; then
 	echo "Could not find or produce a ./configure file!"
 	exit 1
-fi
-
-[[ -z "${VERBOSE}" ]] || echo "Setting default compilation args."
-export	CC="gcc -std=gnu99 -march=native"
-export	CFLAGS="${CFLAGS} -pipe -O3 -ffast-math"
-export	CXX="g++ -march=native"
-export	CXXFLAGS="${CXXFLAGS} -pipe -O3 -ffast-math"
-
-[[ -z "${VERBOSE}" ]] || echo "./configure --enable-silent-rules $@"
-./configure								\
-	--enable-silent-rules						\
-	$@
-
-if [[ -f Makefile ]]; then
-	[[ -z "${VERBOSE}" ]] || echo "Compiling"
-	if [[ -x /bin/pump ]]; then
-		eval $(/bin/pump --startup)
-		zshexit()	{
-			/bin/pump --shutdown
-		}
-	fi
-	make -j20
 fi
 exit 0
