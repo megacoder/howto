@@ -23,19 +23,15 @@ setup()	{
 	sed -e "s/<PROD>/${PROD}/g" >"${HOWTO}" <<'EOF'
 #!/bin/zsh
 # vim: ts=8 sw=8 noet
-if [[ -x /bin/pump ]]; then
-	# If we have pump(1) available, do its initialization now and
-	# register an exit function to gracefully shut it down.  This
-	# is so-o-o cool!
-	eval $( /bin/pump --startup )
-	ZSHEXIT()       {
-		/bin/pump --shutdown
-	}
-fi
+RPMS=(
+)
+for RPM in ${RPMS}; do
+	rpm -q ${RPM} || exit 1
+done
 if [[ -f configure ]]; then
 	autoreconf -fvim
 else
-	configure -m '<PROD>'						\
+	configure -n '<PROD>' -m					\
 	"$@"
 fi
 EOF
