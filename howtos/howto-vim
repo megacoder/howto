@@ -4,6 +4,20 @@
 # my "configure" script there; the "-C src" switch makes the
 # script run in the "src" subdirector.
 
+RPMS=(
+	libXt-devel
+)
+NORPM=
+for RPM in ${RPMS}; do
+	if rpm -q ${RPM} >/dev/null 2>&1; then
+		# OK
+	else
+		NORPM+=" ${RPM}"
+		echo "${RPM} not found." >&2
+	fi
+done
+[[ ! -z "${NORPM}" ]] && exit 1
+
 if [[ -x /bin/pump ]]; then
 	eval $(/bin/pump --startup)
 	ZSHEXIT()	{
@@ -18,16 +32,13 @@ configure -C src -f -m -n vim						\
 	--with-features=huge						\
 									\
 	--disable-netbeans						\
-	--enable-gui							\
+	--disable-nls							\
 	--enable-cscope							\
 	--enable-fontset						\
-	--enable-gnome-check						\
-	--enable-gtk2-check						\
+	--enable-gui							\
 	--enable-luainterp=yes						\
-	--enable-motif-check						\
 	--enable-python3interp=yes					\
 	--enable-pythoninterp=yes					\
-	--enable-athena-check						\
 	--enable-tclinterp						\
 	--enable-rubyinterp=yes						\
 									\
@@ -42,4 +53,4 @@ exit $?
 	--disable-nextaw-check						\
 	--enable-gui=athena						\
 	--enable-gui=gnome						\
-	--enable-gui=gtk2						\
+	--enable-gui							\
