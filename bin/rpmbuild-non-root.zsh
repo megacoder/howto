@@ -3,13 +3,19 @@
 
 ME="${0:t:r}"
 
-NAME="${ME}"
-while getopts X: c; do
+DOCHANGELOG=false
+BUILD=true
+NAME="${0:t:r}"
+
+while getopts X:bcn: c; do
 	case "${c}" in
-	* )	echo "Huh?" >&2; exit 1;;
+		b )	BUILD=false;;
+		c )	DOCHANGELOG=true;;
+		n )	NAME="${OPTARG}";;
+		* )	echo "Huh?" >&2; exit 1;;
 	esac
 done
-shift $(( ${OPTIND} - 1 ))
+shift $(( OPTIND - 1 ))
 
 if [[ $# -gt 0 ]]; then
 	NAME="${0}"
@@ -23,12 +29,19 @@ fi
 autoreconf -fvim
 ./configure
 make -j20 dist
-git changelog >>${NAME}.spec
+
+if ${DOCHANGELOG}; then
+	git changelog >>${NAME}.spec
+fi
+
 rm -rf RPM
 mkdir -p RPM/{SOURCES,RPMS,SRPMS,BUILD,SPECS}
-rpmbuild								\
-	-D"_topdir ${PWD}/RPM"						\
-	-D"_sourcedir ${PWD}"						\
-	-D"_specdir ${PWD}"						\
-	-ba								\
-	${NAME}.spec
+
+if ${DOBUILD}; then
+	rpmbuild							\
+		-D"_topdir ${PWD}/RPM"					\
+		-D"_sourcedir ${PWD}"					\
+		-D"_specdir ${PWD}"					\
+		-ba							\
+		${NAME}.spec
+fi
